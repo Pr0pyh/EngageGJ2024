@@ -30,8 +30,15 @@ public partial class Player : CharacterBody3D
             moveVector += nCamera.GlobalTransform.Basis.X;
         if(Input.IsActionPressed("left"))
             moveVector -= nCamera.GlobalTransform.Basis.X;
+        moveVector = new Vector3(moveVector.X, 0.0f, moveVector.Z);
         Velocity = eSpeed*moveVector;
         MoveAndSlide();
+    }
+
+    public void quitInput()
+    {
+        if(Input.IsActionPressed("exit"))
+            GetTree().Quit();
     }
 
     private void nodeInitialize()
@@ -52,6 +59,7 @@ public partial class Player : CharacterBody3D
     public override void _Ready()
     {
         nodeInitialize();
+        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -60,6 +68,7 @@ public partial class Player : CharacterBody3D
         {
             case STATE.MOVE:
                 move();
+                quitInput();
                 break;
         }
     }
