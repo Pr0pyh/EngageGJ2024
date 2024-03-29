@@ -1,0 +1,26 @@
+[gd_resource type="CylinderMesh" load_steps=4 format=3 uid="uid://qvgnpndhx16f"]
+
+[sub_resource type="Gradient" id="Gradient_ia77d"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8kcvv"]
+gradient = SubResource("Gradient_ia77d")
+width = 256
+height = 256
+fill_from = Vector2(0.436842, 0.00526316)
+fill_to = Vector2(0.478947, 0.457895)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2w0my"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 0.466667)
+albedo_texture = SubResource("GradientTexture2D_8kcvv")
+
+[resource]
+material = SubResource("StandardMaterial3D_2w0my")
+top_radius = 21.881
+bottom_radius = 0.1
+height = 20.0
+radial_segments = 5
+cap_top = false

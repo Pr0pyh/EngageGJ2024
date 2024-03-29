@@ -7,4 +7,9 @@ public partial class TestEnemy : CharacterBody3D
     {
         GD.Print("pozovi");
     }
+
+    public void show()
+    {
+        GD.Print("pokazi");
+    }
 }
