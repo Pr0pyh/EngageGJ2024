@@ -12,16 +12,19 @@ public partial class Photocamera : Node3D
     AnimationPlayer nAnimPlayer;
     Area3D photoShot;
     Area3D photoView;
+    ColorRect colorRect;
     //privatne funkcije
     private void nodeInitialize()
     {
         nAnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         photoShot = GetNode<Area3D>("Photospace");
         photoView = GetNode<Area3D>("Photoview");
+        colorRect = GetNode<CanvasLayer>("CanvasLayer").GetNode<ColorRect>("ColorRect");
         photoShot.Monitoring = false;
         photoShot.Visible = false;
         photoView.Monitoring = false;
         photoView.Visible = false;
+        colorRect.Visible = false;
     }
     private void shoot()
     {

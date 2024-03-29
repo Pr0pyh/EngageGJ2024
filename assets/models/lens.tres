@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ck73l4n0qtl60"]
+
+[resource]
+resource_name = "lens"
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
