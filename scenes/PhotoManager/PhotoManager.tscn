@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyji137b1r8rq"]
+[gd_scene load_steps=4 format=3 uid="uid://cyji137b1r8rq"]
+
+[ext_resource type="Script" path="res://scenes/PhotoManager/PhotoManager.cs" id="1_bbnjm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3nbl"]
-albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jcrg0"]
 material = SubResource("StandardMaterial3D_d3nbl")
 
 [node name="PhotoManager" type="Node3D"]
+script = ExtResource("1_bbnjm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jcrg0")

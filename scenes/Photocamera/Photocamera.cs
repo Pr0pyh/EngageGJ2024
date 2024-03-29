@@ -13,6 +13,7 @@ public partial class Photocamera : Node3D
     Area3D photoShot;
     Area3D photoView;
     ColorRect colorRect;
+    PhotoManager photoManager;
     //privatne funkcije
     private void nodeInitialize()
     {
@@ -20,6 +21,7 @@ public partial class Photocamera : Node3D
         photoShot = GetNode<Area3D>("Photospace");
         photoView = GetNode<Area3D>("Photoview");
         colorRect = GetNode<CanvasLayer>("CanvasLayer").GetNode<ColorRect>("ColorRect");
+        photoManager = GetNode<PhotoManager>("PhotoManager");
         photoShot.Monitoring = false;
         photoShot.Visible = false;
         photoView.Monitoring = false;
@@ -72,6 +74,11 @@ public partial class Photocamera : Node3D
         {
             TestEnemy enemy = (TestEnemy)body;
             enemy.damage();
+        }
+        if(body.GetType() == typeof(Item))
+        {
+            Item item = (Item)body;
+            photoManager.dodajSliku(item.number);
         }
     }
 
