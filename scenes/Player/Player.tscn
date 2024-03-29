@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cviri2tla4fam"]
+
+[ext_resource type="Script" path="res://scenes/Player/Player.cs" id="1_61rc8"]
+[ext_resource type="PackedScene" uid="uid://4resc78m5xv8" path="res://scenes/Photocamera/Photocamera.tscn" id="2_rjlb1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ql3m8"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_61rc8")
+eSpeed = 5.0
+eSensitivity = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ql3m8")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Hand" type="Node3D" parent="."]
+transform = Transform3D(0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 0.695, 1, -1)
+
+[node name="Photocamera" parent="Hand" instance=ExtResource("2_rjlb1")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.715, -0.78, -0.525)
