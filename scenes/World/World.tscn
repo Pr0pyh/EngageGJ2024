@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0fgw3p672m0f"]
+
+[ext_resource type="PackedScene" uid="uid://cviri2tla4fam" path="res://scenes/Player/Player.tscn" id="1_p1wec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06fx0"]
+shading_mode = 0
+albedo_color = Color(1, 0.054902, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sl6ub"]
+material = SubResource("StandardMaterial3D_06fx0")
+size = Vector2(5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d84ab"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66fxy"]
+material = SubResource("StandardMaterial3D_d84ab")
+size = Vector3(3.725, 1, 1)
+
+[sub_resource type="Environment" id="Environment_8a36t"]
+background_mode = 1
+background_color = Color(0.0862745, 0.686275, 0.588235, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.266667, 0, 0, 1)
+fog_enabled = true
+fog_density = 0.0645
+
+[node name="World" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_sl6ub")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.5, -1.44991)
+mesh = SubResource("BoxMesh_66fxy")
+
+[node name="Player" parent="." instance=ExtResource("1_p1wec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.03158)
+eSensitivity = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8a36t")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81043, 4.35062)
+omni_range = 12.3317

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://4resc78m5xv8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxdwb"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vaa12"]
+material = SubResource("StandardMaterial3D_wxdwb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25ocn"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0.180392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iuqnf"]
+material = SubResource("StandardMaterial3D_25ocn")
+size = Vector3(10, 10, 10)
+
+[node name="Photocamera" type="Node3D"]
+
+[node name="CameraModel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vaa12")
+
+[node name="Cone" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237499, 3, -5.61757)
+mesh = SubResource("BoxMesh_iuqnf")
