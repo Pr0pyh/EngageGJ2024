@@ -23,13 +23,13 @@ public partial class Player : CharacterBody3D
     {
         Godot.Vector3 moveVector = new Godot.Vector3(0.0f, 0.0f, 0.0f);
         if(Input.IsActionPressed("up"))
-            moveVector -= nCamera.Basis.Z;
+            moveVector -= nCamera.GlobalTransform.Basis.Z;
         if(Input.IsActionPressed("down"))
-            moveVector += nCamera.Basis.Z;
+            moveVector += nCamera.GlobalTransform.Basis.Z;
         if(Input.IsActionPressed("right"))
-            moveVector += nCamera.Basis.X;
+            moveVector += nCamera.GlobalTransform.Basis.X;
         if(Input.IsActionPressed("left"))
-            moveVector -= nCamera.Basis.X;
+            moveVector -= nCamera.GlobalTransform.Basis.X;
         Velocity = eSpeed*moveVector;
         MoveAndSlide();
     }
