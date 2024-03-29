@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0fgw3p672m0f"]
+[gd_scene load_steps=8 format=3 uid="uid://b0fgw3p672m0f"]
 
 [ext_resource type="PackedScene" uid="uid://cviri2tla4fam" path="res://scenes/Player/Player.tscn" id="1_p1wec"]
+[ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="2_8ose0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06fx0"]
 shading_mode = 0
@@ -38,7 +39,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.5, -1.44991)
 mesh = SubResource("BoxMesh_66fxy")
 
 [node name="Player" parent="." instance=ExtResource("1_p1wec")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.03158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6.03158)
 eSensitivity = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -47,3 +48,6 @@ environment = SubResource("Environment_8a36t")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81043, 4.35062)
 omni_range = 12.3317
+
+[node name="TestEnemy" parent="." instance=ExtResource("2_8ose0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
