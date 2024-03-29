@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0fgw3p672m0f"]
+[gd_scene load_steps=11 format=3 uid="uid://b0fgw3p672m0f"]
 
 [ext_resource type="PackedScene" uid="uid://cviri2tla4fam" path="res://scenes/Player/Player.tscn" id="1_p1wec"]
 [ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="2_8ose0"]
+[ext_resource type="PackedScene" uid="uid://bs4vawvw2aghy" path="res://scenes/Item/Item.tscn" id="3_d4omw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06fx0"]
 shading_mode = 0
@@ -64,6 +65,9 @@ shape = SubResource("BoxShape3D_n7yl8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestEnemy/Area3D"]
 shape = SubResource("SphereShape3D_uri74")
+
+[node name="Item" parent="." instance=ExtResource("3_d4omw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 4)
 
 [connection signal="body_entered" from="TestEnemy/Area3D" to="TestEnemy" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="TestEnemy/Area3D" to="TestEnemy" method="_on_area_3d_body_exited"]
