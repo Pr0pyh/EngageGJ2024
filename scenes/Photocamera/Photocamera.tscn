@@ -1,7 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://4resc78m5xv8"]
+[gd_scene load_steps=13 format=3 uid="uid://4resc78m5xv8"]
 
 [ext_resource type="Script" path="res://scenes/Photocamera/Photocamera.cs" id="1_gkprv"]
 [ext_resource type="Shape3D" uid="uid://b62qhhejjxeul" path="res://resoureces/new_convex_polygon_shape_3d.tres" id="2_kroyt"]
+[ext_resource type="CylinderMesh" uid="uid://qvgnpndhx16f" path="res://resoureces/Photocamera.tres" id="3_mbtui"]
+
+[sub_resource type="Gradient" id="Gradient_acxov"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5hqlj"]
+gradient = SubResource("Gradient_acxov")
+width = 256
+height = 256
+fill_from = Vector2(0.436842, 0.00526316)
+fill_to = Vector2(0.478947, 0.457895)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62kye"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.466667)
+albedo_texture = SubResource("GradientTexture2D_5hqlj")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1jvi2"]
+material = SubResource("StandardMaterial3D_62kye")
+top_radius = 21.881
+bottom_radius = 0.1
+height = 20.0
+radial_segments = 5
+cap_top = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxdwb"]
 shading_mode = 0
@@ -10,41 +36,31 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_vaa12"]
 material = SubResource("StandardMaterial3D_wxdwb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25ocn"]
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-albedo_color = Color(1, 1, 0.180392, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_iuqnf"]
-material = SubResource("StandardMaterial3D_25ocn")
-size = Vector3(10, 10, 10)
-
 [sub_resource type="Animation" id="Animation_dfjd5"]
 resource_name = "shoot"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cone:visible")
+tracks/0/path = NodePath("Photospace:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Photospace:monitoring")
+tracks/1/path = NodePath("Photospace:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 
@@ -53,26 +69,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cone:visible")
+tracks/0/path = NodePath("Photospace:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Photospace:monitoring")
+tracks/1/path = NodePath("Photospace:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t4y8l"]
@@ -86,18 +102,31 @@ script = ExtResource("1_gkprv")
 
 [node name="Photospace" type="Area3D" parent="."]
 transform = Transform3D(-5.21253e-16, -1.19249e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, 1.19249e-08, 0, 0, 0)
+visible = false
+
+[node name="Cone" type="MeshInstance3D" parent="Photospace"]
+transform = Transform3D(-5.21253e-16, 0, 1, -1.19249e-08, 1, 0, -1, -1.19249e-08, -5.21253e-16, 0.89628, 11.2059, -0.237499)
+mesh = ExtResource("3_mbtui")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Photospace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08791, 0)
 shape = ExtResource("2_kroyt")
 
+[node name="Photoview" type="Area3D" parent="."]
+transform = Transform3D(-5.21253e-16, -1.19249e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, 1.19249e-08, 0, 0, 0)
+
+[node name="Cone2" type="MeshInstance3D" parent="Photoview"]
+transform = Transform3D(-5.21253e-16, 0, 1, -1.19249e-08, 1, 0, -1, -1.19249e-08, -5.21253e-16, 0.261418, 11.1975, -0.237499)
+mesh = SubResource("CylinderMesh_1jvi2")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Photoview"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08791, 0)
+shape = ExtResource("2_kroyt")
+
 [node name="CameraModel" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_vaa12")
-
-[node name="Cone" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237499, 3, -5.61757)
-visible = false
-mesh = SubResource("BoxMesh_iuqnf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -105,3 +134,4 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Photospace" to="." method="_on_photospace_body_entered"]
+[connection signal="body_entered" from="Photoview" to="." method="_on_photoview_body_entered"]
