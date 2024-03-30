@@ -4,4 +4,4 @@
 resource_name = "kamera"
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0.696824, 0.696824, 0.696824, 1)
+albedo_color = Color(0.933333, 0.933333, 0.933333, 1)

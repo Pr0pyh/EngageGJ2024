@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Photocamera/Photocamera.cs" id="1_gkprv"]
 [ext_resource type="Shape3D" uid="uid://b62qhhejjxeul" path="res://resoureces/new_convex_polygon_shape_3d.tres" id="2_kroyt"]
 [ext_resource type="CylinderMesh" uid="uid://qvgnpndhx16f" path="res://resoureces/Photocamera.tres" id="3_mbtui"]
-[ext_resource type="PackedScene" uid="uid://cdrya72qearim" path="res://assets/models/kamera.glb" id="4_lramo"]
+[ext_resource type="PackedScene" uid="uid://cdrya72qearim" path="res://assets/models/kameraModel/kamera.glb" id="4_5dkd6"]
 [ext_resource type="PackedScene" uid="uid://cyji137b1r8rq" path="res://scenes/PhotoManager/PhotoManager.tscn" id="5_3tqgn"]
 
 [sub_resource type="Gradient" id="Gradient_acxov"]
@@ -171,11 +171,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 0.87451, 0.34902)
 
-[node name="kamera" parent="." instance=ExtResource("4_lramo")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.52605, -3.45578, -7.141)
-
 [node name="PhotoManager" parent="." instance=ExtResource("5_3tqgn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0)
+
+[node name="kamera" parent="." instance=ExtResource("4_5dkd6")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5, -3.28417, -8.07441)
 
 [connection signal="body_entered" from="Photospace" to="." method="_on_photospace_body_entered"]
 [connection signal="body_entered" from="Photoview" to="." method="_on_photoview_body_entered"]

@@ -8,13 +8,18 @@ public partial class TestEnemy : CharacterBody3D
 		FOLLOW
 	}
 	
+	[Export]
+	public int number;
+
 	STATE state;
 	Player player;
+	GpuParticles3D particle;
 	
 	public override void _Ready()
 	{
 		state = STATE.FOLLOW;
 		player = GetParent().GetNode<Player>("Player");
+		particle = GetNode<GpuParticles3D>("GPUParticles3D");
 		GD.Print(player == null);
 	}
 	
@@ -24,7 +29,7 @@ public partial class TestEnemy : CharacterBody3D
 		{
 			case STATE.IDLE :
 			{
-				GD.Print("IDLE STATE");
+				// GD.Print("IDLE STATE");
 				MoveAndSlide();
 				break;	
 			} 
@@ -37,9 +42,15 @@ public partial class TestEnemy : CharacterBody3D
 	}
 	
 		
-	public void damage()
+	public int damage(int sentNumber, int count)
 	{
-		GD.Print("pozovi");
+		if(sentNumber == number && count > 0)
+		{
+			GD.Print("pozovi");
+			particle.Emitting = true;
+			return number;
+		}
+		return 0;
 	}
 
 	public void show()

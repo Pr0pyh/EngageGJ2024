@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdrya72qearim"
-path="res://.godot/imported/kamera.glb-a0ed6515bb010922c0349fd0e89c076b.scn"
+path="res://.godot/imported/kamera.glb-9ac4544b10932ed632a52e711a0194c2.scn"
 
 [deps]
 
-source_file="res://assets/models/kamera.glb"
-dest_files=["res://.godot/imported/kamera.glb-a0ed6515bb010922c0349fd0e89c076b.scn"]
+source_file="res://assets/models/kameraModel/kamera.glb"
+dest_files=["res://.godot/imported/kamera.glb-9ac4544b10932ed632a52e711a0194c2.scn"]
 
 [params]
 
@@ -33,19 +33,19 @@ _subresources={
 "materials": {
 "Material.002": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/models/Material.002.tres"
+"use_external/path": "res://assets/models/kameraModel/Material.002.tres"
 },
 "crnooo": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/models/crnooo.tres"
+"use_external/path": "res://assets/models/kameraModel/crnooo.tres"
 },
 "kamera": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/models/kamera.tres"
+"use_external/path": "res://assets/models/kameraModel/kamera.tres"
 },
 "lens": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/models/lens.tres"
+"use_external/path": "res://assets/models/kameraModel/lens.tres"
 }
 }
 }
