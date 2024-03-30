@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://by02wx8l8nufu"]
+
+[ext_resource type="Texture2D" uid="uid://dby7di3fwwd3t" path="res://assets/models/Picture1/gitara_gitara-01.png" id="1_s3rha"]
+
+[resource]
+resource_name = "Material.008"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_s3rha")

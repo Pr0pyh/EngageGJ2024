@@ -21,12 +21,14 @@ public partial class TestEnemy : CharacterBody3D
 	AnimationPlayer animMovePlayer;
 	AudioStreamPlayer audioPlayer;
 	AudioStreamPlayer audioPlayer2;
+	AudioStreamPlayer3D audioPlayer3D;
 	Timer resetTimer;
 	Timer hurtTimer;
 	Area3D followArea;
 	Area3D attackArea;
 	Node3D darkMan;
 	Node3D lightMan;
+	Level level;
 	
 	public override void _Ready()
 	{
@@ -43,6 +45,8 @@ public partial class TestEnemy : CharacterBody3D
 		lightMan = GetNode<Node3D>("ImageToStl_com_npc");
 		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		audioPlayer2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
+		audioPlayer3D = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
+		level = GetParent<Level>();
 		// if(number == 0)
 		// 	dream = GetNode<MeshInstance3D>("Photo1");
 		// if(number == 1)
@@ -50,6 +54,7 @@ public partial class TestEnemy : CharacterBody3D
 		// if(number == 2)
 		// 	dream = GetNode<MeshInstance3D>("Photo3");
 		dream = GetNode<MeshInstance3D>($"Photo{number+1}");
+		audioPlayer3D.Play();
 		resetTimer.Start();
 		darkMan.Visible = true;
 		lightMan.Visible = false;
@@ -100,7 +105,9 @@ public partial class TestEnemy : CharacterBody3D
 			GD.Print("pozovi");
 			if(sentNumber == number && count > 0)
 			{
+				audioPlayer3D.Stop();
 				audioPlayer2.Play();
+				level.lowerNumber();
 				darkMan.Visible = false;
 				lightMan.Visible = true;
 				particle.Emitting = true;

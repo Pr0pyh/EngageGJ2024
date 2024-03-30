@@ -7,10 +7,10 @@ using System.Data;
 public partial class PhotoManager : Node3D
 {
     Dictionary<int, int> dict = new Dictionary<int, int>();
-    Array<MeshInstance3D> meshes = new Array<MeshInstance3D>();
-    MeshInstance3D photo1;
-    MeshInstance3D photo2;
-    MeshInstance3D photo3;
+    Array<Node3D> meshes = new Array<Node3D>();
+    Node3D photo1;
+    Node3D photo2;
+    Node3D photo3;
     AnimationPlayer animPlayer;
     ProgressBar countBar;
     AudioStreamPlayer audioPlayer;
@@ -53,9 +53,9 @@ public partial class PhotoManager : Node3D
         dict.Add(0, 0);
         dict.Add(1, 0);
         dict.Add(2, 0);
-        photo1 = GetNode<MeshInstance3D>("Photo1");
-        photo2 = GetNode<MeshInstance3D>("Photo2");
-        photo3 = GetNode<MeshInstance3D>("Photo3");
+        photo1 = GetNode<Node3D>("Picture1");
+        photo2 = GetNode<Node3D>("Picture2");
+        photo3 = GetNode<Node3D>("Picture3");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         countBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
