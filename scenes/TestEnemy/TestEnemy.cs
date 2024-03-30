@@ -46,7 +46,6 @@ public partial class TestEnemy : CharacterBody3D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		GD.Print(state);
 		switch (this.state) 
 		{
 			case STATE.IDLE :

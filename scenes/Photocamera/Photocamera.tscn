@@ -172,10 +172,10 @@ grow_vertical = 2
 color = Color(1, 1, 0.87451, 0.34902)
 
 [node name="PhotoManager" parent="." instance=ExtResource("5_3tqgn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0.971931)
 
 [node name="kamera" parent="." instance=ExtResource("4_5dkd6")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5, -3.28417, -8.07441)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6, -3.28417, -6.07441)
 
 [connection signal="body_entered" from="Photospace" to="." method="_on_photospace_body_entered"]
 [connection signal="body_entered" from="Photoview" to="." method="_on_photoview_body_entered"]
