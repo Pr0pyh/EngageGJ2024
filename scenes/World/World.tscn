@@ -48,7 +48,7 @@ eSensitivity = 1.0
 environment = SubResource("Environment_8a36t")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81043, 4.35062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.81043, 4.35062)
 omni_range = 12.3317
 
 [node name="Item" parent="." instance=ExtResource("3_d4omw")]

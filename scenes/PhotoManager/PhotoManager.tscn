@@ -3,17 +3,20 @@
 [ext_resource type="Script" path="res://scenes/PhotoManager/PhotoManager.cs" id="1_bbnjm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3nbl"]
+shading_mode = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jcrg0"]
 material = SubResource("StandardMaterial3D_d3nbl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fl60f"]
+shading_mode = 0
 albedo_color = Color(0, 0.760784, 0.580392, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8fq5r"]
 material = SubResource("StandardMaterial3D_fl60f")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq6q0"]
+shading_mode = 0
 albedo_color = Color(0.556863, 0, 0.490196, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bod5s"]
