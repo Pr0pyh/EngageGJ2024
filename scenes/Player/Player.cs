@@ -23,6 +23,9 @@ public partial class Player : CharacterBody3D
 	AnimationPlayer animPlayer2;
 	Photocamera photocamera;
 	ProgressBar healthBar;
+	AudioStreamPlayer audioPlayer;
+	AudioStreamPlayer audioPlayer2;
+	AudioStreamPlayer audioPlayer3;
 	//private promenjive
 	float mouseMove;
 	float sway = 2;
@@ -45,9 +48,16 @@ public partial class Player : CharacterBody3D
 			moveVector -= nCamera.GlobalTransform.Basis.X;
 		moveVector = new Vector3(moveVector.X, 0.0f, moveVector.Z);
 		if(moveVector != new Vector3(0.0f, 0.0f, 0.0f))
+		{
 			animPlayer.Play("walk");
+			if(!audioPlayer.Playing)
+				audioPlayer.Play();
+		}
 		else
+		{
 			animPlayer.Stop();
+			audioPlayer.Stop();
+		}
 		Velocity = eSpeed*moveVector;
 		MoveAndSlide();
 	}
@@ -93,6 +103,9 @@ public partial class Player : CharacterBody3D
 		animPlayer2 = GetNode<AnimationPlayer>("AnimationPlayer2");
 		photocamera = hand.GetNode<Photocamera>("Photocamera");
 		healthBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
+		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		audioPlayer2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
+		audioPlayer3 = GetNode<AudioStreamPlayer>("AudioStreamPlayer3");
 	}
 
 	private void shake()
@@ -148,6 +161,8 @@ public partial class Player : CharacterBody3D
 	public void damage(int number)
 	{
 		animPlayer2.Play("damage");
+		if(!audioPlayer2.Playing)
+			audioPlayer2.Play();
 		trauma = number/100.0f;
 		health -= number;
 		healthBar.Value = health;
@@ -161,6 +176,8 @@ public partial class Player : CharacterBody3D
 		health = Mathf.Min(health+number, 100);
 		healthBar.Value = health;
 		animPlayer2.Play("heal");
+		if(!audioPlayer3.Playing)
+			audioPlayer3.Play();
 		GD.Print(health);
 	}
 };

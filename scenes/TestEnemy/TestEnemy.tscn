@@ -1,8 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2gk00xi5birm"]
+[gd_scene load_steps=24 format=3 uid="uid://b2gk00xi5birm"]
 
 [ext_resource type="Script" path="res://scenes/TestEnemy/TestEnemy.cs" id="1_vdx0d"]
 [ext_resource type="PackedScene" uid="uid://cat4uomt3g37i" path="res://assets/models/enemyModel/ImageToStl.com_npc.glb" id="2_v6cuo"]
 [ext_resource type="PackedScene" uid="uid://d1dsqsybxf0q1" path="res://assets/models/enemyModel/anim.tscn" id="3_q017i"]
+[ext_resource type="AudioStream" uid="uid://b70pm2fkri0dg" path="res://assets/audio/punch-6-166699.mp3" id="4_rjxky"]
+[ext_resource type="AudioStream" uid="uid://84a7kkmadbrn" path="res://assets/audio/collected-item-104743.mp3" id="5_bsvcb"]
+[ext_resource type="AudioStream" uid="uid://ivdix2ecaqkp" path="res://assets/audio/heavy-breath-male-63980.mp3" id="6_vgafi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_38xxj"]
 size = Vector3(1, 3, 1)
@@ -28,7 +31,8 @@ radial_accel_min = 2.0
 radial_accel_max = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmlh1"]
-albedo_color = Color(1, 0, 0, 1)
+shading_mode = 0
+albedo_color = Color(0.690196, 0.498039, 0.0235294, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wgnke"]
 material = SubResource("StandardMaterial3D_vmlh1")
@@ -85,6 +89,8 @@ _data = {
 radius = 1.48506
 
 [node name="TestEnemy" type="CharacterBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_y = true
 script = ExtResource("1_vdx0d")
 number = 1
 
@@ -101,6 +107,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 emitting = false
 amount = 12
 one_shot = true
@@ -149,6 +156,19 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
 shape = SubResource("SphereShape3D_ix1et")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rjxky")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bsvcb")
+volume_db = 8.889
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_vgafi")
+volume_db = 5.689
+unit_size = 1.0
+bus = &"breathing"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

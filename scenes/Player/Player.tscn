@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cviri2tla4fam"]
+[gd_scene load_steps=15 format=3 uid="uid://cviri2tla4fam"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.cs" id="1_61rc8"]
 [ext_resource type="PackedScene" uid="uid://4resc78m5xv8" path="res://scenes/Photocamera/Photocamera.tscn" id="2_rjlb1"]
+[ext_resource type="AudioStream" uid="uid://c4y5yclv02icq" path="res://assets/audio/footsteps_hallway-6417.mp3" id="3_yaulx"]
+[ext_resource type="AudioStream" uid="uid://b70pm2fkri0dg" path="res://assets/audio/punch-6-166699.mp3" id="4_evjj1"]
+[ext_resource type="AudioStream" uid="uid://84a7kkmadbrn" path="res://assets/audio/collected-item-104743.mp3" id="5_jgant"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ql3m8"]
 
@@ -154,12 +157,24 @@ color = Color(0, 1, 0, 0.32549)
 [node name="Health" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 1057.0
-offset_top = 41.0
-offset_right = 1098.0
-offset_bottom = -62.0
+offset_left = 1181.0
+offset_top = 39.0
+offset_right = 1222.0
+offset_bottom = -280.0
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_yh46s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kidos")
 fill_mode = 3
 show_percentage = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yaulx")
+volume_db = 12.444
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_evjj1")
+volume_db = -4.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jgant")
+volume_db = -1.0

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c0vnk5n6ot4yt"]
+
+[ext_resource type="Texture2D" uid="uid://dob467p5e5lb6" path="res://assets/models/Picture3/ruza_ruza-01.png" id="1_b7xn8"]
+
+[resource]
+resource_name = "Material.009"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_b7xn8")
