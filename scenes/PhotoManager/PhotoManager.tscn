@@ -128,7 +128,6 @@ _data = {
 script = ExtResource("1_bbnjm")
 
 [node name="Photo1" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("BoxMesh_jcrg0")
 
 [node name="Photo2" type="MeshInstance3D" parent="."]

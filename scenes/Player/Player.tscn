@@ -20,7 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 current = true
 
 [node name="Hand" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 0.84, 0, -1)
+transform = Transform3D(0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 1, 0, -1)
 
 [node name="Photocamera" parent="Head/Camera3D/Hand" instance=ExtResource("2_rjlb1")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.715, -0.78, -0.525)
