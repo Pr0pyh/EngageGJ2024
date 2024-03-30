@@ -104,6 +104,7 @@ public partial class TestEnemy : CharacterBody3D
 		this.GlobalPosition = newPos;
 	}
 
+	// ANDREJ LEPO PULLUJ
 	public void _on_attack_area_body_entered(Node3D body)
 	{
 		if (body is Player)
