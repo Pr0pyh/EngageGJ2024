@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs7tkqrispv6r"]
+
+[ext_resource type="MeshLibrary" uid="uid://cejvm3chslrue" path="res://resoureces/tileset/tileset.tres" id="1_3k35v"]
+
+[node name="Gridmap" type="GridMap"]
+mesh_library = ExtResource("1_3k35v")
