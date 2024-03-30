@@ -18,10 +18,13 @@ public partial class TestEnemy : CharacterBody3D
 	GpuParticles3D particle;
 	MeshInstance3D dream;
 	AnimationPlayer animPlayer;
+	AnimationPlayer animMovePlayer;
 	Timer resetTimer;
 	Timer hurtTimer;
 	Area3D followArea;
 	Area3D attackArea;
+	Node3D darkMan;
+	Node3D lightMan;
 	
 	public override void _Ready()
 	{
@@ -30,9 +33,12 @@ public partial class TestEnemy : CharacterBody3D
 		hurtTimer = GetNode<Timer>("HurtTimer");
 		player = GetParent().GetNode<Player>("Player");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		animMovePlayer = GetNode<Node3D>("anim").GetNode<AnimationPlayer>("AnimationPlayer");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
 		followArea = GetNode<Area3D>("Area3D");
 		attackArea = GetNode<Area3D>("AttackArea");
+		darkMan = GetNode<Node3D>("anim");
+		lightMan = GetNode<Node3D>("ImageToStl_com_npc");
 		// if(number == 0)
 		// 	dream = GetNode<MeshInstance3D>("Photo1");
 		// if(number == 1)
@@ -41,6 +47,8 @@ public partial class TestEnemy : CharacterBody3D
 		// 	dream = GetNode<MeshInstance3D>("Photo3");
 		dream = GetNode<MeshInstance3D>($"Photo{number+1}");
 		resetTimer.Start();
+		darkMan.Visible = true;
+		lightMan.Visible = false;
 		GD.Print(player == null);
 	}
 	
@@ -50,6 +58,7 @@ public partial class TestEnemy : CharacterBody3D
 		{
 			case STATE.IDLE :
 			{
+				animMovePlayer.Play("ArmatureAction");
 				checkDistance();
 				MoveAndSlide();
 				break;	
@@ -62,6 +71,7 @@ public partial class TestEnemy : CharacterBody3D
 			}
 			case STATE.HURT :
 			{
+				animMovePlayer.Play("flashed");
 				checkIfHurt();
 				break;
 			}
@@ -85,6 +95,8 @@ public partial class TestEnemy : CharacterBody3D
 			GD.Print("pozovi");
 			if(sentNumber == number && count > 0)
 			{
+				darkMan.Visible = false;
+				lightMan.Visible = true;
 				particle.Emitting = true;
 				this.state = STATE.HEALED;
 				this.hurtTimer.Stop();
@@ -119,6 +131,7 @@ public partial class TestEnemy : CharacterBody3D
 	
 	private void followPlayer(float delta)
 	{
+		animMovePlayer.Play("ArmatureAction");
 		Vector3 playerPos = player.GlobalPosition;
 		this.LookAt(
 			new Vector3(playerPos.X, this.GlobalPosition.Y, playerPos.Z),

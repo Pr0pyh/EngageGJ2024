@@ -4,4 +4,4 @@
 resource_name = "pants.001"
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0.133333, 0.156863, 0.192157, 1)
+albedo_color = Color(0.568627, 0.584314, 0.964706, 1)
