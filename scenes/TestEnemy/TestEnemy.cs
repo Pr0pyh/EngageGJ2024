@@ -6,7 +6,8 @@ public partial class TestEnemy : CharacterBody3D
 	enum STATE {
 		IDLE,
 		FOLLOW,
-		HURT
+		HURT,
+		HEALED
 	}
 	
 	[Export]
@@ -17,37 +18,46 @@ public partial class TestEnemy : CharacterBody3D
 	GpuParticles3D particle;
 	MeshInstance3D dream;
 	AnimationPlayer animPlayer;
+	Timer resetTimer;
 	Timer hurtTimer;
 	Area3D followArea;
+	Area3D attackArea;
 	
 	public override void _Ready()
 	{
-		state = STATE.FOLLOW;
+		state = STATE.IDLE;
+		resetTimer = GetNode<Timer>("Timer");
 		hurtTimer = GetNode<Timer>("HurtTimer");
 		player = GetParent().GetNode<Player>("Player");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
 		followArea = GetNode<Area3D>("Area3D");
-		if(number == 0)
-			dream = GetNode<MeshInstance3D>("Photo1");
-		if(number == 1)
-			dream = GetNode<MeshInstance3D>("Photo2");
-		if(number == 2)
-			dream = GetNode<MeshInstance3D>("Photo3");
+		attackArea = GetNode<Area3D>("AttackArea");
+		// if(number == 0)
+		// 	dream = GetNode<MeshInstance3D>("Photo1");
+		// if(number == 1)
+		// 	dream = GetNode<MeshInstance3D>("Photo2");
+		// if(number == 2)
+		// 	dream = GetNode<MeshInstance3D>("Photo3");
+		dream = GetNode<MeshInstance3D>($"Photo{number+1}");
+		resetTimer.Start();
 		GD.Print(player == null);
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		GD.Print(state);
 		switch (this.state) 
 		{
 			case STATE.IDLE :
 			{
+				checkDistance();
 				MoveAndSlide();
 				break;	
 			} 
 			case STATE.FOLLOW :
 			{
+				checkDistance();
 				followPlayer((float)delta);
 				break;	
 			}
@@ -56,28 +66,46 @@ public partial class TestEnemy : CharacterBody3D
 				checkIfHurt();
 				break;
 			}
+			case STATE.HEALED :
+			{
+				break;
+			}
 		}
 	}
 	
 		
 	public int damage(int sentNumber, int count)
 	{
-		this.state = STATE.HURT;
-		this.hurtTimer.WaitTime = 1.5f;
-		this.hurtTimer.OneShot = true;
-		this.hurtTimer.Start();
-		followArea.Monitoring = false;
-		GD.Print("pozovi");
-		if(sentNumber == number && count > 0)
+		if(state != STATE.HEALED)
 		{
-			particle.Emitting = true;
-			//animPlayer.Play("death");
-			return number;
+			this.state = STATE.HURT;
+			this.hurtTimer.WaitTime = 1.5f;
+			this.hurtTimer.OneShot = true;
+			this.hurtTimer.Start();
+			followArea.Monitoring = false;
+			GD.Print("pozovi");
+			if(sentNumber == number && count > 0)
+			{
+				particle.Emitting = true;
+				this.state = STATE.HEALED;
+				this.hurtTimer.Stop();
+				followArea.Monitoring = false;
+				//animPlayer.Play("death");
+				return number;
+			}
+			return -1;
 		}
 		
 		return -1;
 	}
 
+	public void checkDistance()
+	{
+		if(player.GlobalTransform.Origin.DistanceTo(this.GlobalTransform.Origin) > 5.0f)
+			state = STATE.IDLE;
+		else
+			state = STATE.FOLLOW;
+	}
 	public void show()
 	{
 		dream.Visible = true;
@@ -110,20 +138,24 @@ public partial class TestEnemy : CharacterBody3D
 		if (body is Player)
 		{
 			Player player = (Player)body;
-			player.damage(30);
+			if(state == STATE.HEALED)
+				player.heal(30);
+			else
+				player.damage(30);
 		}
 	}
 	
 	public void _on_timer_timeout()
 	{
+		resetTimer.Start();
 		if (this.state == STATE.IDLE)
 		{
 			Random rnd = new Random();
 			float randDeg = (float)rnd.NextDouble()*360.0f;
 			float randRad = randDeg * (float)Math.PI / 180.0f;
 			this.RotateY(randRad);		
-			this.Velocity = new Vector3(1.0f, 0.0f, 0.0f);
-			//this.Velocity = this.Velocity.Rotated(new Vector3(0.0f, 1.0f, 0.0f), randRad);
+			this.Velocity = this.Transform.Basis.Z;
+			// this.Velocity = this.Velocity.Rotated(new Vector3(0.0f, 1.0f, 0.0f), randRad);
 		}
 	}
 	
@@ -131,19 +163,19 @@ public partial class TestEnemy : CharacterBody3D
 	{
 		if (this.hurtTimer.TimeLeft <= 0.1f) 
 		{
-			this.state = STATE.IDLE;
+			if(state != STATE.HEALED) this.state = STATE.IDLE;
 			followArea.Monitoring = true;
 		}
 	}
 	
 	public void _on_area_3d_body_entered(Node3D body)
 	{
-		if(this.state != STATE.HURT) this.state = STATE.FOLLOW;
+		// this.state = STATE.FOLLOW;
 	}
 	
 	public void _on_area_3d_body_exited(Node3D body)
 	{
-		if(this.state != STATE.HURT) this.state = STATE.IDLE;
+		// this.state = STATE.IDLE;
 	}
 
 	//public void _on_animation_player_animation_finished(String animName)

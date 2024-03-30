@@ -151,4 +151,11 @@ public partial class Player : CharacterBody3D
 			GetTree().ReloadCurrentScene();
 			//komentar
 	}
+
+	public void heal(int number)
+	{
+		health = Mathf.Min(health+number, 100);
+		animPlayer2.Play("heal");
+		GD.Print(health);
+	}
 };
