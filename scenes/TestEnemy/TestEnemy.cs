@@ -23,6 +23,8 @@ public partial class TestEnemy : CharacterBody3D
 	Timer hurtTimer;
 	Area3D followArea;
 	Area3D attackArea;
+	Node3D darkMan;
+	Node3D lightMan;
 	
 	public override void _Ready()
 	{
@@ -35,6 +37,8 @@ public partial class TestEnemy : CharacterBody3D
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
 		followArea = GetNode<Area3D>("Area3D");
 		attackArea = GetNode<Area3D>("AttackArea");
+		darkMan = GetNode<Node3D>("anim");
+		lightMan = GetNode<Node3D>("ImageToStl_com_npc");
 		// if(number == 0)
 		// 	dream = GetNode<MeshInstance3D>("Photo1");
 		// if(number == 1)
@@ -43,6 +47,8 @@ public partial class TestEnemy : CharacterBody3D
 		// 	dream = GetNode<MeshInstance3D>("Photo3");
 		dream = GetNode<MeshInstance3D>($"Photo{number+1}");
 		resetTimer.Start();
+		darkMan.Visible = true;
+		lightMan.Visible = false;
 		GD.Print(player == null);
 	}
 	
@@ -89,6 +95,8 @@ public partial class TestEnemy : CharacterBody3D
 			GD.Print("pozovi");
 			if(sentNumber == number && count > 0)
 			{
+				darkMan.Visible = false;
+				lightMan.Visible = true;
 				particle.Emitting = true;
 				this.state = STATE.HEALED;
 				this.hurtTimer.Stop();
