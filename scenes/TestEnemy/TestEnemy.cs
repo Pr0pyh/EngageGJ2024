@@ -15,11 +15,13 @@ public partial class TestEnemy : CharacterBody3D
 	Player player;
 	GpuParticles3D particle;
 	MeshInstance3D dream;
+	AnimationPlayer animPlayer;
 	
 	public override void _Ready()
 	{
 		state = STATE.FOLLOW;
 		player = GetParent().GetNode<Player>("Player");
+		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
 		if(number == 0)
 			dream = GetNode<MeshInstance3D>("Photo1");
@@ -55,6 +57,7 @@ public partial class TestEnemy : CharacterBody3D
 		{
 			GD.Print("pozovi");
 			particle.Emitting = true;
+			animPlayer.Play("death");
 			return number;
 		}
 		return -1;
@@ -101,5 +104,11 @@ public partial class TestEnemy : CharacterBody3D
 	private void _on_area_3d_body_exited(Node3D body)
 	{
 		if (this.state != STATE.IDLE) this.state = STATE.IDLE;
+	}
+
+	public void _on_animation_player_animation_finished(String animName)
+	{
+		if(animName == "death")
+			QueueFree();
 	}
 }
