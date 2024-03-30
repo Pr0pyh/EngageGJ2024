@@ -19,6 +19,8 @@ public partial class TestEnemy : CharacterBody3D
 	MeshInstance3D dream;
 	AnimationPlayer animPlayer;
 	AnimationPlayer animMovePlayer;
+	AudioStreamPlayer audioPlayer;
+	AudioStreamPlayer audioPlayer2;
 	Timer resetTimer;
 	Timer hurtTimer;
 	Area3D followArea;
@@ -39,6 +41,8 @@ public partial class TestEnemy : CharacterBody3D
 		attackArea = GetNode<Area3D>("AttackArea");
 		darkMan = GetNode<Node3D>("anim");
 		lightMan = GetNode<Node3D>("ImageToStl_com_npc");
+		audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		audioPlayer2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
 		// if(number == 0)
 		// 	dream = GetNode<MeshInstance3D>("Photo1");
 		// if(number == 1)
@@ -87,6 +91,7 @@ public partial class TestEnemy : CharacterBody3D
 	{
 		if(state != STATE.HEALED)
 		{
+			audioPlayer.Play();
 			this.state = STATE.HURT;
 			this.hurtTimer.WaitTime = 1.5f;
 			this.hurtTimer.OneShot = true;
@@ -95,6 +100,7 @@ public partial class TestEnemy : CharacterBody3D
 			GD.Print("pozovi");
 			if(sentNumber == number && count > 0)
 			{
+				audioPlayer2.Play();
 				darkMan.Visible = false;
 				lightMan.Visible = true;
 				particle.Emitting = true;

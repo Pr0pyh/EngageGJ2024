@@ -10,6 +10,8 @@ public partial class Photocamera : Node3D
 	STATE state;
 	//node deklaracije
 	AnimationPlayer nAnimPlayer;
+    AudioStreamPlayer audioPlayer;
+    AudioStreamPlayer audioPlayer2;
 	Area3D photoShot;
 	Area3D photoView;
 	ColorRect colorRect;
@@ -22,6 +24,8 @@ public partial class Photocamera : Node3D
 		photoView = GetNode<Area3D>("Photoview");
 		colorRect = GetNode<CanvasLayer>("CanvasLayer").GetNode<ColorRect>("ColorRect");
 		photoManager = GetNode<PhotoManager>("PhotoManager");
+        audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        audioPlayer2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
 		photoShot.Monitoring = false;
 		photoShot.Visible = false;
 		photoView.Monitoring = false;
@@ -31,11 +35,13 @@ public partial class Photocamera : Node3D
 	public void shoot(Player player)
 	{
 		player.damage(10);
+        audioPlayer.Play();
 		nAnimPlayer.Play("shoot");
 	}
 
 	public void shoot2()
 	{
+        audioPlayer2.Play();
 		photoView.Visible = !photoView.Visible;
 		photoView.Monitoring = !photoView.Monitoring;
 	}

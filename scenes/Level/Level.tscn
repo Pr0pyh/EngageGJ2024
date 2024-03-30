@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bur6yiqafogh7"]
+[gd_scene load_steps=9 format=3 uid="uid://bur6yiqafogh7"]
 
 [ext_resource type="PackedScene" uid="uid://cviri2tla4fam" path="res://scenes/Player/Player.tscn" id="1_3piwe"]
 [ext_resource type="PackedScene" uid="uid://bs7tkqrispv6r" path="res://scenes/Gridmap/Gridmap.tscn" id="2_wyeur"]
+[ext_resource type="AudioStream" uid="uid://bap3i41cth76q" path="res://assets/audio/eerie-ambience-6836.mp3" id="3_j16jk"]
+[ext_resource type="PackedScene" uid="uid://bs4vawvw2aghy" path="res://scenes/Item/Item.tscn" id="4_kfx3d"]
+[ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="5_fpuj5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06fx0"]
 shading_mode = 0
@@ -30,8 +33,21 @@ mesh = SubResource("PlaneMesh_77kr1")
 environment = SubResource("Environment_ejq3u")
 
 [node name="Player" parent="." instance=ExtResource("1_3piwe")]
+eSensitivity = 0.1
 
 [node name="Gridmap" parent="." instance=ExtResource("2_wyeur")]
 data = {
-"cells": PackedInt32Array(65529, 65528, 1048578, 65531, 65528, 1048576, 65533, 65528, 1048577, 65535, 65528, 1048578, 1, 65528, 1048578, 3, 65528, 1048576, 5, 65528, 1048577)
+"cells": PackedInt32Array(-6, 65529, 1048577, -4, 65529, 1048576, -2, 65529, 1048576, -65536, 65529, 1048578, -65534, 65529, 1048578, -65532, 65529, 1048578, -65530, 65531, 2, -65530, 65533, 0, -65530, 65535, 0, -65530, 1, 1, -65530, 3, 1, -65530, 5, 1)
 }
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j16jk")
+volume_db = -7.153
+autoplay = true
+
+[node name="Item" parent="." instance=ExtResource("4_kfx3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+
+[node name="TestEnemy" parent="." instance=ExtResource("5_fpuj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 11)

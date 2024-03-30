@@ -13,6 +13,7 @@ public partial class PhotoManager : Node3D
     MeshInstance3D photo3;
     AnimationPlayer animPlayer;
     ProgressBar countBar;
+    AudioStreamPlayer audioPlayer;
     public int activePicture = 0;
     public int activePictureCount = 0;
     public void dodajSliku(int i)
@@ -20,6 +21,7 @@ public partial class PhotoManager : Node3D
         if(dict[i]<6)
         {
             dict[i]++;
+            audioPlayer.Play();
             photo1.Visible = false;
             photo2.Visible = false;
             photo3.Visible = false;
@@ -43,6 +45,7 @@ public partial class PhotoManager : Node3D
             meshes[i].Visible = false;
         }
         countBar.Value = dict[i]*20;
+        audioPlayer.Play();
     }
 
     public override void _Ready()
@@ -54,6 +57,7 @@ public partial class PhotoManager : Node3D
         photo2 = GetNode<MeshInstance3D>("Photo2");
         photo3 = GetNode<MeshInstance3D>("Photo3");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         countBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
         meshes.Add(photo1);
         meshes.Add(photo2);
@@ -69,6 +73,7 @@ public partial class PhotoManager : Node3D
         if(Input.IsActionJustPressed("1") && dict[0]>0)
         {
             animPlayer.Play("entry");
+            audioPlayer.Play();
             activePicture = 0;
             countBar.Value = dict[0]*20;
             photo1.Visible = true;
@@ -80,6 +85,7 @@ public partial class PhotoManager : Node3D
         if(Input.IsActionJustPressed("2") && dict[1]>0)
         {
             animPlayer.Play("entry");
+            audioPlayer.Play();
             activePicture = 1;
             countBar.Value = dict[1]*20;
             photo1.Visible = false;
@@ -91,6 +97,7 @@ public partial class PhotoManager : Node3D
         if(Input.IsActionJustPressed("3") && dict[2]>0)
         {
             animPlayer.Play("entry");
+            audioPlayer.Play();
             activePicture = 2;
             countBar.Value = dict[2]*20;
             photo1.Visible = false;
