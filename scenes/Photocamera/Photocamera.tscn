@@ -136,7 +136,7 @@ mesh = ExtResource("3_mbtui")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Photospace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08791, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10543e-15, 1.08791, 4.21341)
 shape = ExtResource("2_kroyt")
 
 [node name="Photoview" type="Area3D" parent="."]
@@ -148,7 +148,7 @@ mesh = SubResource("CylinderMesh_1jvi2")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Photoview"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08791, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10543e-15, 1.08791, 4.0741)
 shape = ExtResource("2_kroyt")
 
 [node name="CameraModel" type="MeshInstance3D" parent="."]
@@ -179,3 +179,4 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5, -3.28417, -8.07441)
 
 [connection signal="body_entered" from="Photospace" to="." method="_on_photospace_body_entered"]
 [connection signal="body_entered" from="Photoview" to="." method="_on_photoview_body_entered"]
+[connection signal="body_exited" from="Photoview" to="." method="_on_photoview_body_exited"]

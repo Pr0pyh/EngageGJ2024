@@ -91,4 +91,13 @@ public partial class Photocamera : Node3D
             enemy.show();
         }
     }
+
+    public void _on_photoview_body_exited(Node body)
+    {
+        if(body.GetType() == typeof(TestEnemy))
+        {
+            TestEnemy enemy = (TestEnemy)body;
+            enemy.unshow();
+        }
+    }
 }

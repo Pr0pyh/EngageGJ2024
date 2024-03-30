@@ -14,12 +14,19 @@ public partial class TestEnemy : CharacterBody3D
 	STATE state;
 	Player player;
 	GpuParticles3D particle;
+	MeshInstance3D dream;
 	
 	public override void _Ready()
 	{
 		state = STATE.FOLLOW;
 		player = GetParent().GetNode<Player>("Player");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
+		if(number == 0)
+			dream = GetNode<MeshInstance3D>("Photo1");
+		if(number == 1)
+			dream = GetNode<MeshInstance3D>("Photo2");
+		if(number == 2)
+			dream = GetNode<MeshInstance3D>("Photo3");
 		GD.Print(player == null);
 	}
 	
@@ -55,7 +62,14 @@ public partial class TestEnemy : CharacterBody3D
 
 	public void show()
 	{
+		dream.Visible = true;
 		GD.Print("pokazi");
+	}
+
+	public void unshow()
+	{
+		dream.Visible = false;
+		GD.Print("unpokazi");
 	}
 	
 	private void followPlayer(float delta)
