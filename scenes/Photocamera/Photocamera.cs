@@ -28,31 +28,32 @@ public partial class Photocamera : Node3D
 		photoView.Visible = false;
 		colorRect.Visible = false;
 	}
-	private void shoot()
+	public void shoot(Player player)
 	{
+        player.damage(10);
 		nAnimPlayer.Play("shoot");
 	}
 
-	private void shoot2()
+	public void shoot2()
 	{
 		photoView.Visible = !photoView.Visible;
 		photoView.Monitoring = !photoView.Monitoring;
 	}
-	private void shootState()
-	{
-		if(Input.IsActionJustPressed("shoot"))
-		{
-			shoot();
-		}
-		if(Input.IsActionJustPressed("shoot2"))
-		{
-			shoot2();
-		}
-		if(Input.IsActionJustReleased("shoot2"))
-		{
-			shoot2();
-		}
-	}
+	// private void shootState()
+	// {
+	// 	if(Input.IsActionJustPressed("shoot"))
+	// 	{
+	// 		shoot();
+	// 	}
+	// 	if(Input.IsActionJustPressed("shoot2"))
+	// 	{
+	// 		shoot2();
+	// 	}
+	// 	if(Input.IsActionJustReleased("shoot2"))
+	// 	{
+	// 		shoot2();
+	// 	}
+	// }
 	public override void _Ready()
 	{
 		nodeInitialize();
@@ -63,7 +64,7 @@ public partial class Photocamera : Node3D
 		switch(state)
 		{
 			case STATE.SHOOT:
-				shootState();
+				// shootState();
 				break;
 		}
 	}
