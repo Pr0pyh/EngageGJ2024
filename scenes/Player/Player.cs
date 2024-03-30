@@ -20,9 +20,16 @@ public partial class Player : CharacterBody3D
 	Camera3D nCamera;
 	Node3D hand;
 	AnimationPlayer animPlayer;
+	AnimationPlayer animPlayer2;
+	Photocamera photocamera;
 	//private promenjive
 	float mouseMove;
 	float sway = 2;
+	int health = 100;
+	double amount;
+	double maxHOffset;
+	double maxVOffset;
+	double trauma;
 	//private funkcije definicije
 	private void move()
 	{
@@ -56,6 +63,21 @@ public partial class Player : CharacterBody3D
 		}
 	}
 
+	private void shootState()
+	{
+		if(Input.IsActionJustPressed("shoot"))
+		{
+			photocamera.shoot(this);
+		}
+		if(Input.IsActionJustPressed("shoot2"))
+		{
+			photocamera.shoot2();
+		}
+		if(Input.IsActionJustReleased("shoot2"))
+		{
+			photocamera.shoot2();
+		}
+	}
 	public void quitInput()
 	{
 		if(Input.IsActionPressed("exit"))
@@ -67,6 +89,24 @@ public partial class Player : CharacterBody3D
 		nCamera = GetNode<Node3D>("Head").GetNode<Camera3D>("Camera3D");
 		hand = GetNode<Node3D>("Head").GetNode<Camera3D>("Camera3D").GetNode<Node3D>("Hand");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		animPlayer2 = GetNode<AnimationPlayer>("AnimationPlayer2");
+		photocamera = hand.GetNode<Photocamera>("Photocamera");
+	}
+
+	private void shake()
+    {
+        amount = trauma;
+        nCamera.HOffset = (float)(maxHOffset * amount * GD.RandRange(-1, 1));
+        nCamera.VOffset = (float)(maxVOffset * amount * GD.RandRange(-1, 1));
+    }
+
+	private void shakeState(double delta)
+	{
+		if(!(trauma < 0.0))
+        {
+            shake();
+            trauma = Mathf.Max((float)(trauma - 0.8*delta), 0.0f);
+        }
 	}
 
 	//godot functions
@@ -84,6 +124,8 @@ public partial class Player : CharacterBody3D
 	{
 		nodeInitialize();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		maxHOffset = 1;
+		maxVOffset = 1;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -92,9 +134,20 @@ public partial class Player : CharacterBody3D
 		{
 			case STATE.MOVE:
 				move();
+				shootState();
+				shakeState(delta);
 				swayMove(delta);
 				quitInput();
 				break;
 		}
+	}
+
+	public void damage(int number)
+	{
+		animPlayer2.Play("damage");
+		trauma = number/100.0f;
+		health -= number;
+		if(health <= 0)
+			GetTree().ReloadCurrentScene();
 	}
 };
