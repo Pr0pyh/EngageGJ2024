@@ -18,6 +18,7 @@ public partial class TestEnemy : CharacterBody3D
 	GpuParticles3D particle;
 	MeshInstance3D dream;
 	AnimationPlayer animPlayer;
+	AnimationPlayer animMovePlayer;
 	Timer resetTimer;
 	Timer hurtTimer;
 	Area3D followArea;
@@ -30,6 +31,7 @@ public partial class TestEnemy : CharacterBody3D
 		hurtTimer = GetNode<Timer>("HurtTimer");
 		player = GetParent().GetNode<Player>("Player");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		animMovePlayer = GetNode<Node3D>("anim").GetNode<AnimationPlayer>("AnimationPlayer");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
 		followArea = GetNode<Area3D>("Area3D");
 		attackArea = GetNode<Area3D>("AttackArea");
@@ -50,6 +52,7 @@ public partial class TestEnemy : CharacterBody3D
 		{
 			case STATE.IDLE :
 			{
+				animMovePlayer.Play("ArmatureAction");
 				checkDistance();
 				MoveAndSlide();
 				break;	
@@ -62,6 +65,7 @@ public partial class TestEnemy : CharacterBody3D
 			}
 			case STATE.HURT :
 			{
+				animMovePlayer.Play("flashed");
 				checkIfHurt();
 				break;
 			}
@@ -119,6 +123,7 @@ public partial class TestEnemy : CharacterBody3D
 	
 	private void followPlayer(float delta)
 	{
+		animMovePlayer.Play("ArmatureAction");
 		Vector3 playerPos = player.GlobalPosition;
 		this.LookAt(
 			new Vector3(playerPos.X, this.GlobalPosition.Y, playerPos.Z),
