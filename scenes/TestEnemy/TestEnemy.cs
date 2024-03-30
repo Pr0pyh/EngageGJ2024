@@ -68,7 +68,7 @@ public partial class TestEnemy : CharacterBody3D
 		this.hurtTimer.Start();
 		followArea.Monitoring = false;
 		GD.Print("pozovi");
-		if(sentNumber == 0 && count > 0)
+		if(sentNumber == number && count > 0)
 		{
 			particle.Emitting = true;
 			//animPlayer.Play("death");
