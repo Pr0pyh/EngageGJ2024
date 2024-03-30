@@ -89,7 +89,7 @@ visible = false
 mesh = SubResource("BoxMesh_an16s")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
