@@ -1,15 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs4vawvw2aghy"]
+[gd_scene load_steps=9 format=3 uid="uid://bs4vawvw2aghy"]
 
 [ext_resource type="Script" path="res://scenes/Item/Item.cs" id="1_vdxju"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_thiuy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6f3iy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44o1c"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_kw4ec"]
+material = SubResource("StandardMaterial3D_44o1c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xuk8y"]
 shading_mode = 0
 albedo_color = Color(0, 1, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_gwrdd"]
-material = SubResource("StandardMaterial3D_6f3iy")
+[sub_resource type="BoxMesh" id="BoxMesh_sdpdi"]
+material = SubResource("StandardMaterial3D_xuk8y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frg6y"]
+shading_mode = 0
+albedo_color = Color(1, 0.145098, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rv82p"]
+material = SubResource("StandardMaterial3D_frg6y")
 
 [node name="Item" type="StaticBody3D"]
 script = ExtResource("1_vdxju")
@@ -18,5 +31,14 @@ number = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_thiuy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_gwrdd")
+[node name="Photo1" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_kw4ec")
+
+[node name="Photo2" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_sdpdi")
+
+[node name="Photo3" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_rv82p")

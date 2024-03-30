@@ -19,8 +19,8 @@ albedo_texture = SubResource("GradientTexture2D_8kcvv")
 
 [resource]
 material = SubResource("StandardMaterial3D_2w0my")
-top_radius = 21.881
+top_radius = 27.822
 bottom_radius = 0.1
-height = 20.0
+height = 32.871
 radial_segments = 5
 cap_top = false
