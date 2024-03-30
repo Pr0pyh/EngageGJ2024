@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bur6yiqafogh7"]
+
+[ext_resource type="PackedScene" uid="uid://cviri2tla4fam" path="res://scenes/Player/Player.tscn" id="1_3piwe"]
+[ext_resource type="PackedScene" uid="uid://bs7tkqrispv6r" path="res://scenes/Gridmap/Gridmap.tscn" id="2_wyeur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06fx0"]
+shading_mode = 0
+albedo_color = Color(0.133333, 0.156863, 0.192157, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_77kr1"]
+material = SubResource("StandardMaterial3D_06fx0")
+size = Vector2(5, 5)
+
+[sub_resource type="Environment" id="Environment_ejq3u"]
+background_mode = 1
+background_color = Color(0.192157, 0.211765, 0.247059, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.266667, 0, 0, 1)
+fog_enabled = true
+fog_light_color = Color(0.192157, 0.211765, 0.247059, 1)
+fog_density = 0.1995
+
+[node name="Level" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_77kr1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ejq3u")
+
+[node name="Player" parent="." instance=ExtResource("1_3piwe")]
+
+[node name="Gridmap" parent="." instance=ExtResource("2_wyeur")]
+data = {
+"cells": PackedInt32Array(65529, 65528, 1048578, 65531, 65528, 1048576, 65533, 65528, 1048577, 65535, 65528, 1048578, 1, 65528, 1048578, 3, 65528, 1048576, 5, 65528, 1048577)
+}

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bs7tkqrispv6r"]
 
-[ext_resource type="MeshLibrary" uid="uid://cejvm3chslrue" path="res://resoureces/tileset/tileset.tres" id="1_3k35v"]
+[ext_resource type="MeshLibrary" uid="uid://bsy7kn8mdlkg8" path="res://resoureces/tileset/zgradetileset.tres" id="1_7ufxm"]
 
 [node name="Gridmap" type="GridMap"]
-mesh_library = ExtResource("1_3k35v")
+mesh_library = ExtResource("1_7ufxm")
