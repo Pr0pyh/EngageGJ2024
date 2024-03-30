@@ -1,0 +1,49 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cat4uomt3g37i"
+path="res://.godot/imported/ImageToStl.com_npc.glb-a55534e8a15413577b6507fc4e9e1e03.scn"
+
+[deps]
+
+source_file="res://assets/models/enemyModel/ImageToStl.com_npc.glb"
+dest_files=["res://.godot/imported/ImageToStl.com_npc.glb-a55534e8a15413577b6507fc4e9e1e03.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"pants.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemyModel/pants.001.tres"
+},
+"shirt": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemyModel/shirt.tres"
+},
+"skin": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemyModel/skin.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

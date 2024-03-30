@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0pe64ecf7dn4"]
 
-[ext_resource type="Texture2D" uid="uid://xqdaa2jtdaap" path="res://assets/models/kamera_kamera.jpg" id="1_tdmrn"]
+[ext_resource type="Texture2D" uid="uid://xqdaa2jtdaap" path="res://assets/models/kameraModel/kamera_kamera.jpg" id="1_tdmrn"]
 
 [resource]
 resource_name = "Material.002"

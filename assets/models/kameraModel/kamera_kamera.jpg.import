@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xqdaa2jtdaap"
-path.s3tc="res://.godot/imported/kamera_kamera.jpg-65dc7c0b4464094f6607f75ea8d1775d.s3tc.ctex"
+path.s3tc="res://.godot/imported/kamera_kamera.jpg-402f883e8b17402859583ea6481f57d9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/kamera_kamera.jpg"
-dest_files=["res://.godot/imported/kamera_kamera.jpg-65dc7c0b4464094f6607f75ea8d1775d.s3tc.ctex"]
+source_file="res://assets/models/kameraModel/kamera_kamera.jpg"
+dest_files=["res://.godot/imported/kamera_kamera.jpg-402f883e8b17402859583ea6481f57d9.s3tc.ctex"]
 
 [params]
 

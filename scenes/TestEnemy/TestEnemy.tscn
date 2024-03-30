@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2gk00xi5birm"]
+[gd_scene load_steps=11 format=3 uid="uid://b2gk00xi5birm"]
 
 [ext_resource type="Script" path="res://scenes/TestEnemy/TestEnemy.cs" id="1_vdx0d"]
+[ext_resource type="PackedScene" uid="uid://cat4uomt3g37i" path="res://assets/models/enemyModel/ImageToStl.com_npc.glb" id="2_v6cuo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_38xxj"]
 
@@ -11,16 +12,65 @@ albedo_color = Color(0.0666667, 0, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_an16s"]
 material = SubResource("StandardMaterial3D_n456v")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_blr0n"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 80.0
+angular_velocity_min = 2.0
+angular_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 2.0
+linear_accel_max = 5.0
+radial_accel_min = 2.0
+radial_accel_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmlh1"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgnke"]
+material = SubResource("StandardMaterial3D_vmlh1")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0q84r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ewio3"]
+radius = 5.70543
+
 [node name="TestEnemy" type="CharacterBody3D"]
 script = ExtResource("1_vdx0d")
+number = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_38xxj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_an16s")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_blr0n")
+draw_pass_1 = SubResource("BoxMesh_wgnke")
+
+[node name="ImageToStl_com_npc" parent="." instance=ExtResource("2_v6cuo")]
+transform = Transform3D(0.6, 0, 0, 0, 1.5, 0, 0, 0, 0.6, 0, -0.465, -1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0q84r")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ewio3")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
