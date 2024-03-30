@@ -149,5 +149,6 @@ public partial class Player : CharacterBody3D
 		health -= number;
 		if(health <= 0)
 			GetTree().ReloadCurrentScene();
+			//komentar
 	}
 };
