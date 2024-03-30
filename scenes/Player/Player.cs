@@ -22,6 +22,7 @@ public partial class Player : CharacterBody3D
 	AnimationPlayer animPlayer;
 	AnimationPlayer animPlayer2;
 	Photocamera photocamera;
+	ProgressBar healthBar;
 	//private promenjive
 	float mouseMove;
 	float sway = 2;
@@ -91,6 +92,7 @@ public partial class Player : CharacterBody3D
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer2 = GetNode<AnimationPlayer>("AnimationPlayer2");
 		photocamera = hand.GetNode<Photocamera>("Photocamera");
+		healthBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
 	}
 
 	private void shake()
@@ -126,6 +128,7 @@ public partial class Player : CharacterBody3D
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		maxHOffset = 1;
 		maxVOffset = 1;
+		healthBar.Value = health;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -147,6 +150,7 @@ public partial class Player : CharacterBody3D
 		animPlayer2.Play("damage");
 		trauma = number/100.0f;
 		health -= number;
+		healthBar.Value = health;
 		if(health <= 0)
 			GetTree().ReloadCurrentScene();
 			//komentar
@@ -155,6 +159,7 @@ public partial class Player : CharacterBody3D
 	public void heal(int number)
 	{
 		health = Mathf.Min(health+number, 100);
+		healthBar.Value = health;
 		animPlayer2.Play("heal");
 		GD.Print(health);
 	}

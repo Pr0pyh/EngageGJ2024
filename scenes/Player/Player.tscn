@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cviri2tla4fam"]
+[gd_scene load_steps=12 format=3 uid="uid://cviri2tla4fam"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.cs" id="1_61rc8"]
 [ext_resource type="PackedScene" uid="uid://4resc78m5xv8" path="res://scenes/Photocamera/Photocamera.tscn" id="2_rjlb1"]
@@ -92,6 +92,13 @@ _data = {
 "heal": SubResource("Animation_gqud5")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh46s"]
+bg_color = Color(0.933333, 0.933333, 0.933333, 1)
+border_color = Color(0.8, 0.8, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kidos"]
+bg_color = Color(0.6, 0.643137, 0.305882, 1)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_61rc8")
 eSpeed = 5.0
@@ -141,3 +148,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 0.32549)
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 1057.0
+offset_top = 41.0
+offset_right = 1098.0
+offset_bottom = -62.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yh46s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kidos")
+fill_mode = 3
+show_percentage = false
