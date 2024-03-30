@@ -18,4 +18,6 @@ public partial class Level : Node3D
         if(number <= 0)
             finish.pristupAllow();
     }
+    //komentar
+    
 }
