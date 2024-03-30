@@ -38,7 +38,6 @@ size = Vector3(0.2, 0.2, 0.2)
 radius = 5.70543
 
 [node name="TestEnemy" type="CharacterBody3D"]
-transform = Transform3D(0.6, 0, 0, 0, 1.5, 0, 0, 0, 0.6, 0, 0, 0)
 script = ExtResource("1_vdx0d")
 number = 1
 
@@ -62,7 +61,7 @@ process_material = SubResource("ParticleProcessMaterial_blr0n")
 draw_pass_1 = SubResource("BoxMesh_wgnke")
 
 [node name="ImageToStl_com_npc" parent="." instance=ExtResource("2_v6cuo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465, -1)
+transform = Transform3D(0.6, 0, 0, 0, 1.5, 0, 0, 0, 0.6, 0, -0.465, -1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0q84r")
