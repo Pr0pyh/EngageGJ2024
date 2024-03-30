@@ -31,6 +31,7 @@ shape = SubResource("BoxShape3D_p2w68")
 mesh = SubResource("BoxMesh_2t2gl")
 
 [node name="Gold" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_pk5gc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
