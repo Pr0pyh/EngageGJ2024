@@ -12,6 +12,7 @@ public partial class PhotoManager : Node3D
     MeshInstance3D photo2;
     MeshInstance3D photo3;
     AnimationPlayer animPlayer;
+    ProgressBar countBar;
     public int activePicture = 0;
     public int activePictureCount = 0;
     public void dodajSliku(int i)
@@ -22,6 +23,7 @@ public partial class PhotoManager : Node3D
             photo1.Visible = false;
             photo2.Visible = false;
             photo3.Visible = false;
+            countBar.Value = dict[i]*20;
             meshes[i].Visible = true;
             activePicture = i;
             GD.Print(activePicture);
@@ -40,6 +42,7 @@ public partial class PhotoManager : Node3D
         {
             meshes[i].Visible = false;
         }
+        countBar.Value = dict[i]*20;
     }
 
     public override void _Ready()
@@ -51,6 +54,7 @@ public partial class PhotoManager : Node3D
         photo2 = GetNode<MeshInstance3D>("Photo2");
         photo3 = GetNode<MeshInstance3D>("Photo3");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        countBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
         meshes.Add(photo1);
         meshes.Add(photo2);
         meshes.Add(photo3);
@@ -66,6 +70,7 @@ public partial class PhotoManager : Node3D
         {
             animPlayer.Play("entry");
             activePicture = 0;
+            countBar.Value = dict[0]*20;
             photo1.Visible = true;
             photo2.Visible = false;
             photo3.Visible = false;
@@ -76,6 +81,7 @@ public partial class PhotoManager : Node3D
         {
             animPlayer.Play("entry");
             activePicture = 1;
+            countBar.Value = dict[1]*20;
             photo1.Visible = false;
             photo2.Visible = true;
             photo3.Visible = false;
@@ -86,6 +92,7 @@ public partial class PhotoManager : Node3D
         {
             animPlayer.Play("entry");
             activePicture = 2;
+            countBar.Value = dict[2]*20;
             photo1.Visible = false;
             photo2.Visible = false;
             photo3.Visible = true;

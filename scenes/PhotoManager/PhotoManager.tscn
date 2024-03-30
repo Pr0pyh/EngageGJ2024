@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyji137b1r8rq"]
+[gd_scene load_steps=14 format=3 uid="uid://cyji137b1r8rq"]
 
 [ext_resource type="Script" path="res://scenes/PhotoManager/PhotoManager.cs" id="1_bbnjm"]
 
@@ -124,6 +124,13 @@ _data = {
 "exit": SubResource("Animation_e1ds4")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhlu2"]
+bg_color = Color(0.933333, 0.933333, 0.933333, 1)
+border_color = Color(0.8, 0.8, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3b7p"]
+bg_color = Color(0.6, 0.643137, 0.305882, 1)
+
 [node name="PhotoManager" type="Node3D"]
 script = ExtResource("1_bbnjm")
 
@@ -142,3 +149,18 @@ mesh = SubResource("BoxMesh_bod5s")
 libraries = {
 "": SubResource("AnimationLibrary_aj41m")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = 38.0
+offset_right = 109.0
+offset_bottom = -65.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_uhlu2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a3b7p")
+fill_mode = 3
+show_percentage = false
