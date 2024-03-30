@@ -5,7 +5,8 @@ public partial class TestEnemy : CharacterBody3D
 {	
 	enum STATE {
 		IDLE,
-		FOLLOW
+		FOLLOW,
+		HURT
 	}
 	
 	[Export]
@@ -16,10 +17,12 @@ public partial class TestEnemy : CharacterBody3D
 	GpuParticles3D particle;
 	MeshInstance3D dream;
 	AnimationPlayer animPlayer;
+	Timer hurtTimer;
 	
 	public override void _Ready()
 	{
 		state = STATE.FOLLOW;
+		hurtTimer = GetNode<Timer>("HurtTimer");
 		player = GetParent().GetNode<Player>("Player");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
@@ -38,7 +41,6 @@ public partial class TestEnemy : CharacterBody3D
 		{
 			case STATE.IDLE :
 			{
-				// GD.Print("IDLE STATE");
 				MoveAndSlide();
 				break;	
 			} 
@@ -47,19 +49,28 @@ public partial class TestEnemy : CharacterBody3D
 				followPlayer((float)delta);
 				break;	
 			}
+			case STATE.HURT :
+			{
+				checkIfHurt();
+				break;
+			}
 		}
 	}
 	
 		
 	public int damage(int sentNumber, int count)
 	{
-		if(sentNumber == number && count > 0)
+		if(sentNumber == 0 && count > 0)
 		{
 			GD.Print("pozovi");
 			particle.Emitting = true;
-			animPlayer.Play("death");
+			this.state = STATE.HURT;
+			this.hurtTimer.WaitTime = 0.5f;
+			this.hurtTimer.Start();
+			//animPlayer.Play("death");
 			return number;
 		}
+		
 		return -1;
 	}
 
@@ -77,13 +88,19 @@ public partial class TestEnemy : CharacterBody3D
 	
 	private void followPlayer(float delta)
 	{
+		Vector3 playerPos = player.GlobalPosition;
+		this.LookAt(
+			new Vector3(playerPos.X, this.GlobalPosition.Y, playerPos.Z),
+			new Vector3(0.0f, 1.0f, 0.0f),
+			false
+		);
 		Vector3 newPos = this
 						.GlobalPosition
 						.MoveToward(player.GlobalPosition, (float)delta);
 		this.GlobalPosition = newPos;
 	}
 	
-	private void _on_timer_timeout()
+	public void _on_timer_timeout()
 	{
 		if (this.state == STATE.IDLE)
 		{
@@ -96,19 +113,24 @@ public partial class TestEnemy : CharacterBody3D
 		}
 	}
 	
-	private void _on_area_3d_body_entered(Node3D body)
+	public void checkIfHurt()
+	{
+		if (this.hurtTimer.TimeLeft == 0.0f) this.state = STATE.IDLE;
+	}
+	
+	public void _on_area_3d_body_entered(Node3D body)
 	{
 		if (this.state != STATE.FOLLOW) this.state = STATE.FOLLOW;
 	}
 	
-	private void _on_area_3d_body_exited(Node3D body)
+	public void _on_area_3d_body_exited(Node3D body)
 	{
 		if (this.state != STATE.IDLE) this.state = STATE.IDLE;
 	}
 
-	public void _on_animation_player_animation_finished(String animName)
-	{
-		if(animName == "death")
-			QueueFree();
-	}
+	//public void _on_animation_player_animation_finished(String animName)
+	//{
+		//if(animName == "death")
+			//QueueFree();
+	//}
 }
