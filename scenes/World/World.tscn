@@ -55,12 +55,20 @@ omni_range = 12.3317
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 4)
 
 [node name="Item2" parent="." instance=ExtResource("3_d4omw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 7.38385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 19.3839)
 number = 0
 
 [node name="Item3" parent="." instance=ExtResource("3_d4omw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 10.0468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 13.0468)
 number = 2
 
 [node name="TestEnemy" parent="." instance=ExtResource("2_8ose0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62579, 0.828079, 4.30396)
+
+[node name="TestEnemy2" parent="." instance=ExtResource("2_8ose0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62579, 0.828079, 12.4117)
+number = 0
+
+[node name="TestEnemy3" parent="." instance=ExtResource("2_8ose0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6464, 0.828079, 16.6167)
+number = 2
