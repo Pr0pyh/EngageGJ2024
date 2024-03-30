@@ -30,7 +30,7 @@ public partial class Photocamera : Node3D
 	}
 	public void shoot(Player player)
 	{
-        player.damage(10);
+		player.damage(10);
 		nAnimPlayer.Play("shoot");
 	}
 

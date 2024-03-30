@@ -94,19 +94,19 @@ public partial class Player : CharacterBody3D
 	}
 
 	private void shake()
-    {
-        amount = trauma;
-        nCamera.HOffset = (float)(maxHOffset * amount * GD.RandRange(-1, 1));
-        nCamera.VOffset = (float)(maxVOffset * amount * GD.RandRange(-1, 1));
-    }
+	{
+		amount = trauma;
+		nCamera.HOffset = (float)(maxHOffset * amount * GD.RandRange(-1, 1));
+		nCamera.VOffset = (float)(maxVOffset * amount * GD.RandRange(-1, 1));
+	}
 
 	private void shakeState(double delta)
 	{
 		if(!(trauma < 0.0))
-        {
-            shake();
-            trauma = Mathf.Max((float)(trauma - 0.8*delta), 0.0f);
-        }
+		{
+			shake();
+			trauma = Mathf.Max((float)(trauma - 0.8*delta), 0.0f);
+		}
 	}
 
 	//godot functions

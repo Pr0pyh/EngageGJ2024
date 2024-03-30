@@ -103,6 +103,15 @@ public partial class TestEnemy : CharacterBody3D
 						.MoveToward(player.GlobalPosition, (float)delta);
 		this.GlobalPosition = newPos;
 	}
+
+	public void _on_attack_area_body_entered(Node3D body)
+	{
+		if (body is Player)
+		{
+			Player player = (Player)body;
+			player.damage(30);
+		}
+	}
 	
 	public void _on_timer_timeout()
 	{

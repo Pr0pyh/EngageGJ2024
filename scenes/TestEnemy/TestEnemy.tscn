@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2gk00xi5birm"]
+[gd_scene load_steps=20 format=3 uid="uid://b2gk00xi5birm"]
 
 [ext_resource type="Script" path="res://scenes/TestEnemy/TestEnemy.cs" id="1_vdx0d"]
 [ext_resource type="PackedScene" uid="uid://cat4uomt3g37i" path="res://assets/models/enemyModel/ImageToStl.com_npc.glb" id="2_v6cuo"]
@@ -79,6 +79,9 @@ _data = {
 "death": SubResource("Animation_1l4x1")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ix1et"]
+radius = 1.48506
+
 [node name="TestEnemy" type="CharacterBody3D"]
 script = ExtResource("1_vdx0d")
 number = 1
@@ -136,7 +139,13 @@ libraries = {
 
 [node name="HurtTimer" type="Timer" parent="."]
 
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_ix1et")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
