@@ -57,7 +57,7 @@ public partial class TestEnemy : CharacterBody3D
 			particle.Emitting = true;
 			return number;
 		}
-		return 0;
+		return -1;
 	}
 
 	public void show()

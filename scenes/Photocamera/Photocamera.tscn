@@ -25,9 +25,9 @@ albedo_texture = SubResource("GradientTexture2D_5hqlj")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1jvi2"]
 material = SubResource("StandardMaterial3D_62kye")
-top_radius = 21.881
+top_radius = 27.822
 bottom_radius = 0.1
-height = 20.0
+height = 32.871
 radial_segments = 5
 cap_top = false
 
@@ -131,7 +131,7 @@ transform = Transform3D(-5.21253e-16, -1.19249e-08, -1, 1, -4.37114e-08, 0, -4.3
 visible = false
 
 [node name="Cone" type="MeshInstance3D" parent="Photospace"]
-transform = Transform3D(-5.21253e-16, 0, 1, -1.19249e-08, 1, 0, -1, -1.19249e-08, -5.21253e-16, 0.89628, 11.2059, -0.237499)
+transform = Transform3D(-5.21253e-16, 0, 1, -1.19249e-08, 1, 0, -1, -1.19249e-08, -5.21253e-16, 0.89628, 17.9511, -0.237499)
 mesh = ExtResource("3_mbtui")
 skeleton = NodePath("../..")
 
@@ -143,7 +143,7 @@ shape = ExtResource("2_kroyt")
 transform = Transform3D(-5.21253e-16, -1.19249e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, 1.19249e-08, 0, 0, 0)
 
 [node name="Cone2" type="MeshInstance3D" parent="Photoview"]
-transform = Transform3D(-5.21253e-16, 0, 1, -1.19249e-08, 1, 0, -1, -1.19249e-08, -5.21253e-16, 0.261418, 11.1975, -0.237499)
+transform = Transform3D(-5.21253e-16, 0, 1, -1.19249e-08, 1, 0, -1, -1.19249e-08, -5.21253e-16, 0.261418, 18.1975, -0.237499)
 mesh = SubResource("CylinderMesh_1jvi2")
 skeleton = NodePath("../..")
 
