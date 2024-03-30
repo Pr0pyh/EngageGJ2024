@@ -18,6 +18,7 @@ public partial class TestEnemy : CharacterBody3D
 	MeshInstance3D dream;
 	AnimationPlayer animPlayer;
 	Timer hurtTimer;
+	Area3D followArea;
 	
 	public override void _Ready()
 	{
@@ -26,6 +27,7 @@ public partial class TestEnemy : CharacterBody3D
 		player = GetParent().GetNode<Player>("Player");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		particle = GetNode<GpuParticles3D>("GPUParticles3D");
+		followArea = GetNode<Area3D>("Area3D");
 		if(number == 0)
 			dream = GetNode<MeshInstance3D>("Photo1");
 		if(number == 1)
@@ -60,13 +62,15 @@ public partial class TestEnemy : CharacterBody3D
 		
 	public int damage(int sentNumber, int count)
 	{
+		this.state = STATE.HURT;
+		this.hurtTimer.WaitTime = 1.5f;
+		this.hurtTimer.OneShot = true;
+		this.hurtTimer.Start();
+		followArea.Monitoring = false;
+		GD.Print("pozovi");
 		if(sentNumber == 0 && count > 0)
 		{
-			GD.Print("pozovi");
 			particle.Emitting = true;
-			this.state = STATE.HURT;
-			this.hurtTimer.WaitTime = 0.5f;
-			this.hurtTimer.Start();
 			//animPlayer.Play("death");
 			return number;
 		}
@@ -115,17 +119,21 @@ public partial class TestEnemy : CharacterBody3D
 	
 	public void checkIfHurt()
 	{
-		if (this.hurtTimer.TimeLeft == 0.0f) this.state = STATE.IDLE;
+		if (this.hurtTimer.TimeLeft <= 0.1f) 
+		{
+			this.state = STATE.IDLE;
+			followArea.Monitoring = true;
+		}
 	}
 	
 	public void _on_area_3d_body_entered(Node3D body)
 	{
-		if (this.state != STATE.FOLLOW) this.state = STATE.FOLLOW;
+		if(this.state != STATE.HURT) this.state = STATE.FOLLOW;
 	}
 	
 	public void _on_area_3d_body_exited(Node3D body)
 	{
-		if (this.state != STATE.IDLE) this.state = STATE.IDLE;
+		if(this.state != STATE.HURT) this.state = STATE.IDLE;
 	}
 
 	//public void _on_animation_player_animation_finished(String animName)
