@@ -1,9 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://cviri2tla4fam"]
+[gd_scene load_steps=6 format=3 uid="uid://cviri2tla4fam"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.cs" id="1_61rc8"]
 [ext_resource type="PackedScene" uid="uid://4resc78m5xv8" path="res://scenes/Photocamera/Photocamera.tscn" id="2_rjlb1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ql3m8"]
+
+[sub_resource type="Animation" id="Animation_bcvad"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Hand/Photocamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.715, -0.78, -0.525), Vector3(0.715, -0.875, -0.525), Vector3(0.715, -0.78, -0.525)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i46h8"]
+_data = {
+"walk": SubResource("Animation_bcvad")
+}
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_61rc8")
@@ -24,3 +46,8 @@ transform = Transform3D(0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 
 
 [node name="Photocamera" parent="Head/Camera3D/Hand" instance=ExtResource("2_rjlb1")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.715, -0.78, -0.525)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i46h8")
+}
