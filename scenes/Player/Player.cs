@@ -15,6 +15,8 @@ public partial class Player : CharacterBody3D
 	public float eSpeed;
 	[Export]
 	public float eSensitivity;
+	[Export]
+	public bool final;
 
 	//Node access varijable
 	Camera3D nCamera;
@@ -30,7 +32,8 @@ public partial class Player : CharacterBody3D
 	//private promenjive
 	float mouseMove;
 	float sway = 2;
-	int health = 100;
+	[Export]
+	public int health;
 	double amount;
 	double maxHOffset;
 	double maxVOffset;
@@ -170,8 +173,13 @@ public partial class Player : CharacterBody3D
 		health -= number;
 		healthBar.Value = health;
 		if(health <= 0)
-			GetTree().ReloadCurrentScene();
+		{
+			if(!final)
+				GetTree().ReloadCurrentScene();
+			else
+				GetTree().ChangeSceneToFile("res://scenes/Level/MainMenu.tscn");
 			//komentar
+		}
 	}
 
 	public void heal(int number)

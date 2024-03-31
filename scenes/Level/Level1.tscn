@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://crn85ayy2fdkx"]
 
 [ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_gxg1o"]
-[ext_resource type="PackedScene" path="res://scenes/Level/Level2.tscn" id="2_tsmcf"]
+[ext_resource type="PackedScene" uid="uid://b73l7bmauvrby" path="res://scenes/Level/Level2.tscn" id="2_tsmcf"]
 
 [node name="Level1" instance=ExtResource("1_gxg1o")]
 
 [node name="Player" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -14)
 
 [node name="Gridmap" parent="." index="3"]
 data = {
@@ -24,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3, -17)
 nextLevel = ExtResource("2_tsmcf")
 
 [node name="Label3D" type="Label3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06384, 2.26651, -20.8859)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37435, 2.26651, -20.8859)
 text = "I had a dream last night, I'll call it a nightmare. I was walking
 through our unusual \"dream world\" with (WASD). 
 I needed to go to station."

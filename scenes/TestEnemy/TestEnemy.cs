@@ -103,7 +103,7 @@ public partial class TestEnemy : CharacterBody3D
 			this.hurtTimer.Start();
 			followArea.Monitoring = false;
 			GD.Print("pozovi");
-			if(sentNumber == number && count > 0)
+			if(sentNumber == number)
 			{
 				audioPlayer3D.Stop();
 				audioPlayer2.Play();
