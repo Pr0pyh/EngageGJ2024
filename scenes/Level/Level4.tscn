@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://diese6xid60lo"]
+
+[ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_ovma7"]
+[ext_resource type="PackedScene" uid="uid://bs4vawvw2aghy" path="res://scenes/Item/Item.tscn" id="2_beg3r"]
+[ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="3_jyo6d"]
+[ext_resource type="PackedScene" uid="uid://drfagx4idxrwq" path="res://scenes/Level/Level5.tscn" id="4_43irp"]
+
+[node name="Level4" instance=ExtResource("1_ovma7")]
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0, 0)
+
+[node name="Gridmap" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(-9, 65528, 655362, -9, 65533, 655362, -9, 0, 655360, -9, 2, 655361, -9, 5, 655361, -9, 8, 655361, -7, 10, 1441792, -4, 11, 1441794, -65535, 11, 1441794, -65531, 11, 1441794, -65528, 11, 1441792, -65526, 11, 1441793, -7, 65525, 1048577, -4, 65525, 1048577, -2, 65525, 1048576, -65535, 65525, 1048578, -65531, 65525, 1048577, -65529, 65525, 1048576, -65526, 65525, 1048578, -65523, 65535, 2, -65523, 65532, 0, -65523, 2, 0, -65525, 65535, 0, -65523, 4, 0, -65523, 65530, 0, -65523, 65524, 1048576, -65521, 65524, 1048576, -65519, 65524, 1048577, -65516, 65524, 1048578, -65522, 12, 1441794, -65517, 12, 1441794, -65512, 12, 1441794, -65509, 9, 2, -65509, 5, 1, -65509, 2, 1, -65509, 65535, 1, -65509, 65532, 1, -65509, 65529, 2, -65511, 65525, 1048578, -65510, 65527, 0)
+}
+
+[node name="Item" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4612, 1, -10.5146)
+
+[node name="Item2" parent="." index="6" instance=ExtResource("2_beg3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4612, 1, 9.17423)
+
+[node name="TestEnemy" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1618, 0, -7.84334)
+
+[node name="TestEnemy2" parent="." index="8" instance=ExtResource("3_jyo6d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1618, 0, 9.79209)
+
+[node name="Finish" parent="." index="9"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 50, 3, 0)
+nextLevel = ExtResource("4_43irp")
