@@ -35,3 +35,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.3455, 0, 4.94172)
 [node name="Finish" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5933, 3, 11.2097)
 nextLevel = ExtResource("4_o2qvi")
+
+[node name="Label3D" type="Label3D" parent="." index="11"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 18.9791, 4.94171, 7.14591)
+text = "I always found funny people 
+who only define beauty through simmetry. 
+I only see structure, order, oppressive, but needed. 
+I would always find a new item on the other side."
+font_size = 40

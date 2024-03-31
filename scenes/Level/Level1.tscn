@@ -45,10 +45,10 @@ font_size = 40
 
 [node name="Label3D3" type="Label3D" parent="." index="10"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.0056, 3.87008, 8.76958)
-text = "We do often dream about kids, 
-but some people get used to it...like an addiction. 
+text = "We do often dream about childhood, 
+but some people just get used to it...like an addiction. 
 In front of me was a man like that. Saw him
-dreaming about them through visor (Mouse2).
+dreaming about it through visor (Mouse2).
 I took a photo of him while holding a polaroid photo.
 I blinded him with his own dream, but he seemed so happy......"
 font_size = 75

@@ -9,7 +9,7 @@
 number = 6
 
 [node name="Player" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, 0)
 
 [node name="Gridmap" parent="." index="3"]
 data = {
@@ -51,3 +51,11 @@ number = 2
 [node name="Finish" parent="." index="14"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 80, 3, 23)
 nextLevel = ExtResource("4_wp2vw")
+
+[node name="Label3D" type="Label3D" parent="." index="15"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 22.8405, 6.69563, 0.971754)
+text = "Why I was keep going. I could have 
+stopped and go back in safety of 
+my cleaned structured nest. 
+But I founded pleasure in HEALING people."
+font_size = 55

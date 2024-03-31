@@ -31,3 +31,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1618, 0, 9.79209)
 [node name="Finish" parent="." index="9"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 50, 3, 0)
 nextLevel = ExtResource("4_43irp")
+
+[node name="Label3D" type="Label3D" parent="." index="10"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 20.9962, 5.07024, -0.792541)
+text = "In front of me, 
+I found along 
+the teddy bear 
+A GUITAR. 
+Weird object, which noone can play anymore.
+ I needed to find out(MOUSE 2) who has this silly dream. 
+I switched through pictures
+(NUMBER 1 - TEDDY
+NUMBER 2 - GUITAR
+NUMBER 3 - ROSE)"

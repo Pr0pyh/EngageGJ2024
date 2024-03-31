@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyji137b1r8rq"]
+[gd_scene load_steps=20 format=3 uid="uid://cyji137b1r8rq"]
 
 [ext_resource type="Script" path="res://scenes/PhotoManager/PhotoManager.cs" id="1_bbnjm"]
 [ext_resource type="AudioStream" uid="uid://dr6a6hy5jhlhn" path="res://assets/audio/item-pickup-37089.mp3" id="2_gcuxa"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://0leo0j525v4i" path="res://assets/models/Picture1/gitara.glb" id="3_nmia6"]
 [ext_resource type="PackedScene" uid="uid://bc2w17pqg6hy4" path="res://assets/models/Picture2/meda.tscn" id="3_upq5p"]
 [ext_resource type="PackedScene" uid="uid://b2ufhmof5ekrx" path="res://assets/models/Picture3/ruza.tscn" id="5_6f1tj"]
+[ext_resource type="Texture2D" uid="uid://njhu5nets0gm" path="res://assets/uiTheme/broj1.png" id="5_ful6s"]
+[ext_resource type="Texture2D" uid="uid://bbkrlcu7655ll" path="res://assets/uiTheme/broj2.png" id="6_ir1dv"]
+[ext_resource type="Texture2D" uid="uid://cut1d2im7lvuj" path="res://assets/uiTheme/broj3.png" id="7_j6286"]
 
 [sub_resource type="Animation" id="Animation_6avmm"]
 length = 0.001
@@ -224,6 +227,18 @@ theme_override_styles/background = SubResource("StyleBoxFlat_uhlu2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a3b7p")
 fill_mode = 3
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(355, 30)
+texture = ExtResource("5_ful6s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(494, 30)
+texture = ExtResource("6_ir1dv")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(637, 30)
+texture = ExtResource("7_j6286")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gcuxa")
