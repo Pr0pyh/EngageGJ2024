@@ -19,6 +19,9 @@ public partial class PhotoManager : Node3D
     Node3D photo1;
     Node3D photo2;
     Node3D photo3;
+    Sprite2D number1;
+    Sprite2D number2;
+    Sprite2D number3;
     AnimationPlayer animPlayer;
     AnimationPlayer animPlayer2;
     ProgressBar countBar;
@@ -82,6 +85,12 @@ public partial class PhotoManager : Node3D
         animPlayer2 = GetNode<AnimationPlayer>("AnimationPlayer2");
         audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         countBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
+        number1 = GetNode<CanvasLayer>("CanvasLayer").GetNode<Sprite2D>("Sprite2D");
+        number2 = GetNode<CanvasLayer>("CanvasLayer").GetNode<Sprite2D>("Sprite2D2");
+        number3 = GetNode<CanvasLayer>("CanvasLayer").GetNode<Sprite2D>("Sprite2D3");
+        number1.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        number2.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        number3.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         meshes.Add(photo1);
         meshes.Add(photo2);
         meshes.Add(photo3);
@@ -98,6 +107,9 @@ public partial class PhotoManager : Node3D
         activePictureCount = dict[activePicture];
         if(Input.IsActionJustPressed("1") && dict[0]>0)
         {
+            number1.Modulate = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+            number2.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            number3.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             animPlayer.Play("entry");
             audioPlayer.Play();
             activePicture = 0;
@@ -110,6 +122,9 @@ public partial class PhotoManager : Node3D
         }
         if(Input.IsActionJustPressed("2") && dict[1]>0)
         {
+            number1.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            number2.Modulate = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+            number3.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             animPlayer.Play("entry");
             audioPlayer.Play();
             activePicture = 1;
@@ -122,6 +137,9 @@ public partial class PhotoManager : Node3D
         }
         if(Input.IsActionJustPressed("3") && dict[2]>0)
         {
+            number1.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            number2.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            number3.Modulate = new Color(1.0f, 1.0f, 0.0f, 1.0f);
             animPlayer.Play("entry");
             audioPlayer.Play();
             activePicture = 2;
