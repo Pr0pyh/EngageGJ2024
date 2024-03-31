@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ceiwd1s3bg2ii"]
+[gd_scene load_steps=12 format=3 uid="uid://ceiwd1s3bg2ii"]
 
 [ext_resource type="PackedScene" uid="uid://cviri2tla4fam" path="res://scenes/Player/Player.tscn" id="1_hkt0n"]
 [ext_resource type="Script" path="res://scenes/Level/Level.cs" id="1_ve3mv"]
 [ext_resource type="PackedScene" uid="uid://bs7tkqrispv6r" path="res://scenes/Gridmap/Gridmap.tscn" id="2_0rq0e"]
-[ext_resource type="AudioStream" uid="uid://c727b68rbbdlm" path="res://assets/audio/piano-drops-piano-soft-rain-or-flowing-water-interpretation-182329.mp3" id="4_f0qoq"]
+[ext_resource type="AudioStream" uid="uid://daxyo8nidx4e8" path="res://assets/audio/emotional-thoughtful-piano-thinking-in-silence-141580.mp3" id="4_hl2ja"]
 [ext_resource type="PackedScene" uid="uid://bh2blsbecnyiy" path="res://scenes/Finish/Finish.tscn" id="5_j5lqn"]
 [ext_resource type="PackedScene" uid="uid://cwr1k3que5it6" path="res://scenes/EnemySpawner/EnemySpawner.tscn" id="6_slwbb"]
 [ext_resource type="PackedScene" uid="uid://bs4vawvw2aghy" path="res://scenes/Item/Item.tscn" id="7_2mntb"]
+[ext_resource type="PackedScene" uid="uid://lvn2drkbyj8p" path="res://assets/models/zgradaSarena/zgradeSarena.tscn" id="8_46w8d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06fx0"]
 shading_mode = 0
@@ -47,12 +48,12 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_f0qoq")
-volume_db = -7.153
+stream = ExtResource("4_hl2ja")
+volume_db = 1.736
 autoplay = true
 
 [node name="Finish" parent="." instance=ExtResource("5_j5lqn")]
-transform = Transform3D(-0.0276076, 0, 0.999619, 0, 1, 0, -0.999619, 0, -0.0276076, 13.1467, 3, 23.1643)
+transform = Transform3D(-0.0276076, 0, 0.999619, 0, 1, 0, -0.999619, 0, -0.0276076, 13.1467, 3, 16.1643)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_slwbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3623, 0, 5)
@@ -69,3 +70,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50806, 1, -10.9749)
 [node name="Item3" parent="." instance=ExtResource("7_2mntb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0215, 1, -10.9749)
 number = 2
+
+[node name="zgrade" parent="." instance=ExtResource("8_46w8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 20)
+
+[node name="zgrade2" parent="." instance=ExtResource("8_46w8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.2908, 0, 21.7684)
+
+[node name="zgrade3" parent="." instance=ExtResource("8_46w8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.8504, 0, 16.7684)

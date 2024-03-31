@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cviri2tla4fam"]
+[gd_scene load_steps=16 format=3 uid="uid://cviri2tla4fam"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.cs" id="1_61rc8"]
 [ext_resource type="PackedScene" uid="uid://4resc78m5xv8" path="res://scenes/Photocamera/Photocamera.tscn" id="2_rjlb1"]
@@ -80,6 +80,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ochld"]
 resource_name = "damage"
@@ -136,10 +148,39 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_ffwrg"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ua6an"]
 _data = {
 "RESET": SubResource("Animation_r3xnp"),
 "damage": SubResource("Animation_ochld"),
+"death": SubResource("Animation_ffwrg"),
 "heal": SubResource("Animation_gqud5")
 }
 
@@ -262,3 +303,5 @@ volume_db = -4.0
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jgant")
 volume_db = -1.0
+
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]

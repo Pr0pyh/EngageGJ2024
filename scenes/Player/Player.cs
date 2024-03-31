@@ -174,10 +174,15 @@ public partial class Player : CharacterBody3D
 		healthBar.Value = health;
 		if(health <= 0)
 		{
+			animPlayer2.Stop();
 			if(!final)
-				GetTree().ReloadCurrentScene();
+			{
+				animPlayer2.Play("death");
+			}
 			else
+			{
 				GetTree().ChangeSceneToFile("res://scenes/Level/MainMenu.tscn");
+			}
 			//komentar
 		}
 	}
@@ -190,5 +195,11 @@ public partial class Player : CharacterBody3D
 		if(!audioPlayer3.Playing)
 			audioPlayer3.Play();
 		GD.Print(health);
+	}
+
+	public void _on_animation_player_2_animation_finished(String animName)
+	{
+		if(animName == "death")
+			GetTree().ReloadCurrentScene();
 	}
 };
