@@ -3,11 +3,19 @@ using Godot.Collections;
 using System;
 using System.Collections;
 using System.Data;
+using System.Linq;
 
 public partial class PhotoManager : Node3D
 {
+    [Export]
+    PackedScene photoInstance1;
+    [Export]
+    PackedScene photoInstance2;
+    [Export]
+    PackedScene photoInstance3;
     Dictionary<int, int> dict = new Dictionary<int, int>();
     Array<Node3D> meshes = new Array<Node3D>();
+    Array<PackedScene> premadeMeshes = new Array<PackedScene>();
     Node3D photo1;
     Node3D photo2;
     Node3D photo3;
@@ -33,6 +41,12 @@ public partial class PhotoManager : Node3D
             GD.Print(activePictureCount);
             animPlayer.Play("entry");
             animPlayer2.Play("countUp");
+            if(dict[i] > 1)
+            {
+                Node3D photo = premadeMeshes[i].Instantiate<Node3D>();
+                meshes[i].AddChild(photo);
+                photo.RotateX(Mathf.DegToRad(3.0f*dict[i]));
+            }
         }
     }
 
@@ -49,6 +63,11 @@ public partial class PhotoManager : Node3D
         countBar.Value = dict[i]*20;
         audioPlayer.Play();
         animPlayer2.Play("countDown");
+        if(dict[i] >= 1)
+        {
+            Array<Node> nodes = meshes[i].GetChildren();
+            meshes[i].RemoveChild(nodes[0]);
+        }
     }
 
     public override void _Ready()
@@ -66,6 +85,9 @@ public partial class PhotoManager : Node3D
         meshes.Add(photo1);
         meshes.Add(photo2);
         meshes.Add(photo3);
+        premadeMeshes.Add(photoInstance1);
+        premadeMeshes.Add(photoInstance2);
+        premadeMeshes.Add(photoInstance3);
         photo1.Visible = false;
         photo2.Visible = false;
         photo3.Visible = false;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cyji137b1r8rq"]
+[gd_scene load_steps=17 format=3 uid="uid://cyji137b1r8rq"]
 
 [ext_resource type="Script" path="res://scenes/PhotoManager/PhotoManager.cs" id="1_bbnjm"]
 [ext_resource type="AudioStream" uid="uid://dr6a6hy5jhlhn" path="res://assets/audio/item-pickup-37089.mp3" id="2_gcuxa"]
+[ext_resource type="PackedScene" uid="uid://mimcvb1yw7ph" path="res://assets/models/Picture2/gitara.tscn" id="3_14sie"]
 [ext_resource type="PackedScene" uid="uid://0leo0j525v4i" path="res://assets/models/Picture1/gitara.glb" id="3_nmia6"]
 [ext_resource type="PackedScene" uid="uid://bc2w17pqg6hy4" path="res://assets/models/Picture2/meda.tscn" id="3_upq5p"]
 [ext_resource type="PackedScene" uid="uid://b2ufhmof5ekrx" path="res://assets/models/Picture3/ruza.tscn" id="5_6f1tj"]
@@ -183,6 +184,9 @@ _data = {
 
 [node name="PhotoManager" type="Node3D"]
 script = ExtResource("1_bbnjm")
+photoInstance1 = ExtResource("3_upq5p")
+photoInstance2 = ExtResource("3_14sie")
+photoInstance3 = ExtResource("5_6f1tj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -208,6 +212,7 @@ offset_bottom = 515.0
 color = Color(1, 0, 0, 1)
 
 [node name="Health" type="ProgressBar" parent="CanvasLayer"]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 68.0
