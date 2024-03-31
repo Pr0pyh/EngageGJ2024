@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crn85ayy2fdkx"]
 
 [ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_gxg1o"]
-[ext_resource type="PackedScene" uid="uid://b73l7bmauvrby" path="res://scenes/Level/Level2.tscn" id="2_tsmcf"]
+[ext_resource type="PackedScene" path="res://scenes/Level/Level2.tscn" id="2_tsmcf"]
 
 [node name="Level1" instance=ExtResource("1_gxg1o")]
 
@@ -22,3 +22,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -9)
 [node name="Finish" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3, -17)
 nextLevel = ExtResource("2_tsmcf")
+
+[node name="Label3D" type="Label3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06384, 2.26651, -20.8859)
+text = "I had a dream last night, I'll call it a nightmare. I was walking
+through our unusual \"dream world\" with (WASD). 
+I needed to go to station."
+font_size = 95
+
+[node name="Label3D2" type="Label3D" parent="." index="9"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 14.0169, 3.40647, 10.9996)
+text = "I had a camera with me 
+to take photos with (Mouse1). In front of
+me was a weird object. A teddy bear, like 
+there was a kid living in this city. 
+
+
+
+I took a photo of it and 
+got a polaroid photo."
+font_size = 40
+
+[node name="Label3D3" type="Label3D" parent="." index="10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.0056, 3.87008, 8.76958)
+text = "We do often dream about kids, 
+but some people get used to it...like an addiction. 
+In front of me was a man like that. Saw him
+dreaming about them through visor (Mouse2).
+I took a photo of him while holding a polaroid photo.
+I blinded him with his own dream, but he seemed so happy......"
+font_size = 75
+horizontal_alignment = 0

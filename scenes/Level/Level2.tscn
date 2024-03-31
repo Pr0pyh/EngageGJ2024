@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b73l7bmauvrby"]
+[gd_scene load_steps=4 format=3 uid="uid://4jffk25kbidp"]
 
 [ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_wnrs7"]
 [ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="2_pnx1o"]
-[ext_resource type="PackedScene" uid="uid://due1q2h72gos6" path="res://scenes/Level/Level3.tscn" id="3_vkjoy"]
+[ext_resource type="PackedScene" path="res://scenes/Level/Level3.tscn" id="3_vkjoy"]
 
 [node name="Level2" instance=ExtResource("1_wnrs7")]
 number = 2
@@ -28,3 +28,11 @@ number = 0
 [node name="Finish" parent="." index="8"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72, 3, -1)
 nextLevel = ExtResource("3_vkjoy")
+
+[node name="Label3D" type="Label3D" parent="." index="9"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 14.0188, 2.90438, -4.99309)
+text = "There's still more of them,
+crazy fanatics in hope of children. But it looks like
+I came across another pink teddy. 
+I'll take more photos of it.
+But the more I do it, the more pain I'm feeling."
