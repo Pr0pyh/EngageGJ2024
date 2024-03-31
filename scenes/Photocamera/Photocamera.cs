@@ -80,8 +80,11 @@ public partial class Photocamera : Node3D
 		if(body.GetType() == typeof(TestEnemy))
 		{
 			TestEnemy enemy = (TestEnemy)body;
-			int number = enemy.damage(photoManager.activePicture, photoManager.activePictureCount);
-			photoManager.obrisiSliku(number);
+			if(photoManager.activePictureCount > 0)
+			{
+				int number = enemy.damage(photoManager.activePicture, photoManager.activePictureCount);
+				photoManager.obrisiSliku(number);
+			}
 		}
 		if(body.GetType() == typeof(Item))
 		{

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwr1k3que5it6"]
+
+[ext_resource type="Script" path="res://scenes/EnemySpawner/EnemySpawner.cs" id="1_gmejr"]
+[ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="2_a501u"]
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_gmejr")
+enemyScene = ExtResource("2_a501u")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

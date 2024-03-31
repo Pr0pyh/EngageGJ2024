@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwl8hd5xij6of"]
+
+[ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_anyco"]
+[ext_resource type="PackedScene" uid="uid://bs4vawvw2aghy" path="res://scenes/Item/Item.tscn" id="2_7an10"]
+[ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="3_w0t6s"]
+[ext_resource type="PackedScene" uid="uid://ceiwd1s3bg2ii" path="res://scenes/Level/FinalScene.tscn" id="4_jdjqb"]
+
+[node name="Level7" instance=ExtResource("1_anyco")]
+number = 6
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 25)
+
+[node name="Gridmap" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(-5, 65527, 1048578, -65536, 65527, 1048578, -65531, 65527, 1048578, -65527, 65527, 1048577, -65528, 65521, 917505, -8, 65529, 655360, -8, 65531, 655360, -8, 65533, 655361, -8, 0, 655361, -8, 4, 655362, -8, 9, 655362, -8, 14, 655362, -5, 16, 1441794, -65536, 16, 1441794, -65531, 16, 1441794, -65528, 13, 2, -65526, 10, 1441794, -65523, 8, 655362, -65520, 5, 1441794, -65518, 8, 655362, -65518, 13, 655362, -65515, 15, 1441794, -65512, 15, 1441793, -65509, 15, 1441793, -65506, 15, 1441793, -65503, 15, 1441793, -65501, 13, 2, -65501, 9, 2, -65501, 6, 2, -65501, 2, 2, -65501, 65533, 2, -65501, 65534, 2, -65501, 65529, 2, -65504, 65526, 1048578, -65508, 65526, 1048578, -65513, 65526, 1048578, -65518, 65526, 1048578, -65522, 65526, 1048578, -65526, 65526, 1048578, -65507, 65531, 1048577, 327709, 65531, 1048577, 327688, 65534, 1048577, -65528, 65534, 1048577, -65507, 6, 1048577, 262173, 6, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)
+
+[node name="Item" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1, 17)
+
+[node name="Item2" parent="." index="6" instance=ExtResource("2_7an10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1, -4.37993)
+
+[node name="Item3" parent="." index="7" instance=ExtResource("2_7an10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4144, 1, 0.814066)
+number = 2
+
+[node name="TestEnemy" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
+
+[node name="TestEnemy2" parent="." index="9" instance=ExtResource("3_w0t6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8455, 0, 9.15226)
+
+[node name="TestEnemy3" parent="." index="10" instance=ExtResource("3_w0t6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8712, 0, 5.89091)
+
+[node name="TestEnemy4" parent="." index="11" instance=ExtResource("3_w0t6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0103, 0, 5.89091)
+number = 0
+
+[node name="TestEnemy5" parent="." index="12" instance=ExtResource("3_w0t6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5725, 0, -8.12079)
+number = 2
+
+[node name="TestEnemy6" parent="." index="13" instance=ExtResource("3_w0t6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11935, 0, 2.38798)
+number = 2
+
+[node name="Finish" parent="." index="14"]
+nextLevel = ExtResource("4_jdjqb")

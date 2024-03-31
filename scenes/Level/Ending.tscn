@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://ryrirgk3814c"]
+
+[ext_resource type="Theme" uid="uid://cg4iux0vtyltn" path="res://assets/uiTheme/MinimalUI(1).tres" id="1_ckw81"]
+[ext_resource type="AudioStream" uid="uid://c727b68rbbdlm" path="res://assets/audio/piano-drops-piano-soft-rain-or-flowing-water-interpretation-182329.mp3" id="2_1v5w5"]
+[ext_resource type="Script" path="res://scenes/Level/Ending.cs" id="2_qaucp"]
+
+[sub_resource type="Animation" id="Animation_icjw5"]
+resource_name = "ending"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(10, 17.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["", "Thank you for playing."]
+}
+
+[sub_resource type="Animation" id="Animation_sawvl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Thank you for playing."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2330v"]
+_data = {
+"RESET": SubResource("Animation_sawvl"),
+"ending": SubResource("Animation_icjw5")
+}
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ckw81")
+script = ExtResource("2_qaucp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ckw81")
+color = Color(0.192157, 0.211765, 0.247059, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ckw81")
+theme_type_variation = &"HeaderLarge"
+text = "Dream Catcher"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 44.0
+offset_right = 108.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ckw81")
+theme_type_variation = &"HeaderLarge"
+text = "Thank you for playing."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2330v")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1v5w5")
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

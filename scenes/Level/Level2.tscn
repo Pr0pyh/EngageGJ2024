@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4jffk25kbidp"]
+[gd_scene load_steps=4 format=3 uid="uid://b73l7bmauvrby"]
 
 [ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_wnrs7"]
 [ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="2_pnx1o"]
-[ext_resource type="PackedScene" path="res://scenes/Level/Level3.tscn" id="3_vkjoy"]
+[ext_resource type="PackedScene" uid="uid://due1q2h72gos6" path="res://scenes/Level/Level3.tscn" id="3_vkjoy"]
 
 [node name="Level2" instance=ExtResource("1_wnrs7")]
 number = 2
