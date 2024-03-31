@@ -1,29 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs4vawvw2aghy"]
+[gd_scene load_steps=6 format=3 uid="uid://bs4vawvw2aghy"]
 
 [ext_resource type="Script" path="res://scenes/Item/Item.cs" id="1_vdxju"]
+[ext_resource type="Texture2D" uid="uid://dww5p4dhsvor8" path="res://assets/sprites/meda_sprite.png" id="2_svvev"]
+[ext_resource type="Texture2D" uid="uid://bgpffr17cv0cb" path="res://assets/sprites/gitara_sprite.png" id="3_eooh0"]
+[ext_resource type="Texture2D" uid="uid://7fmjfyqt7r43" path="res://assets/sprites/ruza_sprite.png" id="4_llxb7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_thiuy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44o1c"]
-shading_mode = 0
-albedo_color = Color(0.984314, 0.533333, 0.705882, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kw4ec"]
-material = SubResource("StandardMaterial3D_44o1c")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xuk8y"]
-shading_mode = 0
-albedo_color = Color(0.976471, 0.941176, 0.478431, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sdpdi"]
-material = SubResource("StandardMaterial3D_xuk8y")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frg6y"]
-shading_mode = 0
-albedo_color = Color(0.568627, 0.584314, 0.964706, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rv82p"]
-material = SubResource("StandardMaterial3D_frg6y")
 
 [node name="Item" type="StaticBody3D"]
 script = ExtResource("1_vdxju")
@@ -34,12 +16,24 @@ shape = SubResource("BoxShape3D_thiuy")
 
 [node name="Photo1" type="MeshInstance3D" parent="."]
 visible = false
-mesh = SubResource("BoxMesh_kw4ec")
+
+[node name="Sprite3D" type="Sprite3D" parent="Photo1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_svvev")
 
 [node name="Photo2" type="MeshInstance3D" parent="."]
 visible = false
-mesh = SubResource("BoxMesh_sdpdi")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Photo2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("3_eooh0")
 
 [node name="Photo3" type="MeshInstance3D" parent="."]
 visible = false
-mesh = SubResource("BoxMesh_rv82p")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Photo3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("4_llxb7")

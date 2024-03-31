@@ -56,6 +56,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ochld"]
 resource_name = "damage"
@@ -72,6 +96,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect4:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_gqud5"]
 resource_name = "heal"
@@ -82,6 +118,18 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -172,6 +220,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 0.32549)
 
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = 1132.0
+offset_top = 25.0
+offset_right = 1267.0
+offset_bottom = 452.0
+color = Color(0, 1, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = 1132.0
+offset_top = 25.0
+offset_right = 1267.0
+offset_bottom = 452.0
+color = Color(1, 0, 0, 1)
+
 [node name="Health" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -182,6 +246,7 @@ offset_bottom = -280.0
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_yh46s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kidos")
+rounded = true
 fill_mode = 3
 show_percentage = false
 

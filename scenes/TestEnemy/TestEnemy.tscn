@@ -1,10 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2gk00xi5birm"]
+[gd_scene load_steps=21 format=3 uid="uid://b2gk00xi5birm"]
 
 [ext_resource type="Script" path="res://scenes/TestEnemy/TestEnemy.cs" id="1_vdx0d"]
 [ext_resource type="PackedScene" uid="uid://cat4uomt3g37i" path="res://assets/models/enemyModel/ImageToStl.com_npc.glb" id="2_v6cuo"]
 [ext_resource type="PackedScene" uid="uid://d1dsqsybxf0q1" path="res://assets/models/enemyModel/anim.tscn" id="3_q017i"]
+[ext_resource type="Texture2D" uid="uid://dsdggii54sgvc" path="res://assets/sprites/gitara_oblak.png" id="4_47qyb"]
+[ext_resource type="Texture2D" uid="uid://conk5d2slhyd6" path="res://assets/sprites/meda_oblak.png" id="4_a5hs2"]
 [ext_resource type="AudioStream" uid="uid://b70pm2fkri0dg" path="res://assets/audio/punch-6-166699.mp3" id="4_rjxky"]
 [ext_resource type="AudioStream" uid="uid://84a7kkmadbrn" path="res://assets/audio/collected-item-104743.mp3" id="5_bsvcb"]
+[ext_resource type="Texture2D" uid="uid://2s62k6fnmat0" path="res://assets/sprites/ruza_oblak.png" id="5_w3o5h"]
 [ext_resource type="AudioStream" uid="uid://ivdix2ecaqkp" path="res://assets/audio/heavy-breath-male-63980.mp3" id="6_vgafi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_38xxj"]
@@ -42,27 +45,6 @@ size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ewio3"]
 radius = 5.70543
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5326r"]
-shading_mode = 0
-albedo_color = Color(0.984314, 0.533333, 0.705882, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2c62f"]
-material = SubResource("StandardMaterial3D_5326r")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gp0s"]
-shading_mode = 0
-albedo_color = Color(0.976471, 0.941176, 0.478431, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1d0q2"]
-material = SubResource("StandardMaterial3D_3gp0s")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f3gs"]
-shading_mode = 0
-albedo_color = Color(0.568627, 0.584314, 0.964706, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7o18u"]
-material = SubResource("StandardMaterial3D_1f3gs")
 
 [sub_resource type="Animation" id="Animation_1l4x1"]
 resource_name = "death"
@@ -131,19 +113,34 @@ shape = SubResource("BoxShape3D_0q84r")
 shape = SubResource("SphereShape3D_ewio3")
 
 [node name="Photo1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.539116, 3.66734, 0)
 visible = false
-mesh = SubResource("BoxMesh_2c62f")
+
+[node name="Sprite3D" type="Sprite3D" parent="Photo1"]
+billboard = 1
+texture = ExtResource("4_a5hs2")
+hframes = 18
+frame = 17
 
 [node name="Photo2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.767008, 3.55341, 0)
 visible = false
-mesh = SubResource("BoxMesh_1d0q2")
+
+[node name="Sprite3D" type="Sprite3D" parent="Photo2"]
+billboard = 1
+texture = ExtResource("4_47qyb")
+hframes = 18
+frame = 17
 
 [node name="Photo3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.671608, 3.45848, 0)
 visible = false
-mesh = SubResource("BoxMesh_7o18u")
+
+[node name="Sprite3D" type="Sprite3D" parent="Photo3"]
+billboard = 1
+texture = ExtResource("5_w3o5h")
+hframes = 18
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
