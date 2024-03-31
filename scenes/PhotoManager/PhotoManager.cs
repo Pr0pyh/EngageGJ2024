@@ -40,7 +40,7 @@ public partial class PhotoManager : Node3D
             GD.Print(activePicture);
             GD.Print(activePictureCount);
             animPlayer.Play("entry");
-            animPlayer2.Play("countUp");
+            // animPlayer2.Play("countUp");
             if(dict[i] > 1)
             {
                 Node3D photo = premadeMeshes[i].Instantiate<Node3D>();
@@ -62,7 +62,7 @@ public partial class PhotoManager : Node3D
         }
         countBar.Value = dict[i]*20;
         audioPlayer.Play();
-        animPlayer2.Play("countDown");
+        // animPlayer2.Play("countDown");
         if(dict[i] >= 1)
         {
             Array<Node> nodes = meshes[i].GetChildren();
