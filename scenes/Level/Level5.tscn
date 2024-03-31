@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://drfagx4idxrwq"]
+
+[ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_tmug2"]
+[ext_resource type="PackedScene" uid="uid://bs4vawvw2aghy" path="res://scenes/Item/Item.tscn" id="2_sero8"]
+[ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="3_uyxg2"]
+
+[node name="Level5" instance=ExtResource("1_tmug2")]
+number = 3
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 11)
+
+[node name="Gridmap" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(-9, 65529, 655362, -9, 65534, 655362, -9, 3, 655362, -9, 8, 655362, -9, 13, 655362, -9, 18, 655362, -6, 65526, 1048578, -1, 65526, 1048578, -65534, 65526, 1048576, -65532, 65526, 1048577, -65529, 65526, 1048577, -65527, 65526, 1048576, -65524, 65526, 1048578, -65519, 65526, 1048578, -65514, 65526, 1048578, -65520, 65535, 2, -65520, 4, 2, -65520, 9, 2, -65520, 13, 2, -6, 21, 1441794, -1, 21, 1441794, -65532, 21, 1441794, -65527, 21, 1441794, -65522, 21, 1441794, -65517, 21, 1441794, -65513, 21, 1441794, -65526, 9, 0, -65524, 9, 0, -65522, 9, 0, -65526, 3, 0, -65524, 3, 0, -65522, 3, 0, -65502, 65535, 655362, -65502, 4, 655362, -65502, 8, 655362, -65502, 12, 655362, -65500, 9, 655360, -65498, 9, 655360, -65496, 9, 655360, -65500, 3, 655360, -65498, 3, 655360, -65496, 3, 655360, -65509, 65526, 1048578, -65504, 65526, 1048578, -65499, 65526, 1048578, -65494, 65526, 1048578, -65489, 65526, 1048578, -65484, 65526, 1048578, -65481, 65529, 2, -65481, 65533, 2, -65481, 1, 2, -65481, 6, 2, -65481, 10, 2, -65481, 14, 2, -65481, 18, 2, -65481, 21, 0, -65484, 21, 1441794, -65487, 21, 1441794, -65491, 21, 1441794, -65495, 21, 1441794, -65500, 21, 1441794, -65504, 21, 1441794, -65508, 21, 1441794)
+}
+
+[node name="Item" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1, 13)
+
+[node name="Item2" parent="." index="6" instance=ExtResource("2_sero8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.6792, 1, 13)
+
+[node name="TestEnemy" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8889, 0, 2.96926)
+
+[node name="TestEnemy2" parent="." index="8" instance=ExtResource("3_uyxg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.3836, 0, 20.017)
+number = 0
+
+[node name="TestEnemy3" parent="." index="9" instance=ExtResource("3_uyxg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.3455, 0, 4.94172)
+
+[node name="Finish" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5933, 3, 11.2097)

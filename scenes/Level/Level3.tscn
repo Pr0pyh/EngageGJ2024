@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://due1q2h72gos6"]
+[gd_scene load_steps=4 format=3 uid="uid://due1q2h72gos6"]
 
 [ext_resource type="PackedScene" uid="uid://bur6yiqafogh7" path="res://scenes/Level/Level.tscn" id="1_ueaxj"]
 [ext_resource type="PackedScene" uid="uid://b2gk00xi5birm" path="res://scenes/TestEnemy/TestEnemy.tscn" id="2_ury2d"]
+[ext_resource type="PackedScene" uid="uid://diese6xid60lo" path="res://scenes/Level/Level4.tscn" id="3_at4gr"]
 
 [node name="Level3" instance=ExtResource("1_ueaxj")]
 number = 4
@@ -34,3 +35,4 @@ number = 0
 
 [node name="Finish" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 78)
+nextLevel = ExtResource("3_at4gr")
