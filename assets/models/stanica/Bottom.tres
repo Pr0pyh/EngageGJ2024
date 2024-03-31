@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cs18e1gb604r1"]
+
+[resource]
+resource_name = "Bottom"
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.167418, 0.167418, 0.167418, 1)
