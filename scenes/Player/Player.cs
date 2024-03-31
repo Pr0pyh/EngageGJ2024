@@ -18,6 +18,7 @@ public partial class Player : CharacterBody3D
 
 	//Node access varijable
 	Camera3D nCamera;
+	Camera3D viewmodelCamera;
 	Node3D hand;
 	AnimationPlayer animPlayer;
 	AnimationPlayer animPlayer2;
@@ -58,6 +59,7 @@ public partial class Player : CharacterBody3D
 			animPlayer.Stop();
 			audioPlayer.Stop();
 		}
+		viewmodelCamera.GlobalTransform = nCamera.GlobalTransform;
 		Velocity = eSpeed*moveVector;
 		MoveAndSlide();
 	}
@@ -98,6 +100,7 @@ public partial class Player : CharacterBody3D
 	private void nodeInitialize()
 	{
 		nCamera = GetNode<Node3D>("Head").GetNode<Camera3D>("Camera3D");
+		viewmodelCamera = nCamera.GetNode<SubViewportContainer>("SubViewportContainer").GetNode<SubViewport>("SubViewport").GetNode<Camera3D>("viewModel");
 		hand = GetNode<Node3D>("Head").GetNode<Camera3D>("Camera3D").GetNode<Node3D>("Hand");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer2 = GetNode<AnimationPlayer>("AnimationPlayer2");

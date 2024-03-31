@@ -84,5 +84,6 @@ shadow_mesh = SubResource("ArrayMesh_vhdgx")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0798705, 0, 0, 0, 1.0865, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_qu3b2")
 skeleton = NodePath("")
