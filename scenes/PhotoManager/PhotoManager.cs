@@ -12,6 +12,7 @@ public partial class PhotoManager : Node3D
     Node3D photo2;
     Node3D photo3;
     AnimationPlayer animPlayer;
+    AnimationPlayer animPlayer2;
     ProgressBar countBar;
     AudioStreamPlayer audioPlayer;
     public int activePicture = 0;
@@ -31,6 +32,7 @@ public partial class PhotoManager : Node3D
             GD.Print(activePicture);
             GD.Print(activePictureCount);
             animPlayer.Play("entry");
+            animPlayer2.Play("countUp");
         }
     }
 
@@ -46,6 +48,7 @@ public partial class PhotoManager : Node3D
         }
         countBar.Value = dict[i]*20;
         audioPlayer.Play();
+        animPlayer2.Play("countDown");
     }
 
     public override void _Ready()
@@ -57,6 +60,7 @@ public partial class PhotoManager : Node3D
         photo2 = GetNode<Node3D>("Picture2");
         photo3 = GetNode<Node3D>("Picture3");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        animPlayer2 = GetNode<AnimationPlayer>("AnimationPlayer2");
         audioPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         countBar = GetNode<CanvasLayer>("CanvasLayer").GetNode<ProgressBar>("Health");
         meshes.Add(photo1);
