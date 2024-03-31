@@ -175,14 +175,7 @@ public partial class Player : CharacterBody3D
 		if(health <= 0)
 		{
 			animPlayer2.Stop();
-			if(!final)
-			{
-				animPlayer2.Play("death");
-			}
-			else
-			{
-				GetTree().ChangeSceneToFile("res://scenes/Level/MainMenu.tscn");
-			}
+			animPlayer2.Play("death");
 			//komentar
 		}
 	}
@@ -200,6 +193,15 @@ public partial class Player : CharacterBody3D
 	public void _on_animation_player_2_animation_finished(String animName)
 	{
 		if(animName == "death")
-			GetTree().ReloadCurrentScene();
+		{
+			if(!final)
+			{
+				GetTree().ReloadCurrentScene();
+			}
+			else
+			{
+				GetTree().ChangeSceneToFile("res://scenes/Level/Ending.tscn");
+			}
+		}
 	}
 };
