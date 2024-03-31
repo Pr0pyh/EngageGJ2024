@@ -9,7 +9,7 @@
 number = 6
 
 [node name="Player" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3294, 0, 25)
 
 [node name="Gridmap" parent="." index="3"]
 data = {
@@ -49,3 +49,11 @@ number = 2
 
 [node name="Finish" parent="." index="14"]
 nextLevel = ExtResource("4_jdjqb")
+
+[node name="Label3D" type="Label3D" parent="." index="15"]
+transform = Transform3D(1, 0, 5.56363e-08, 0, 1, 0, -5.56363e-08, 0, 1, 58.8685, 2.90438, 15.0346)
+text = "Becoming weaker with each shot of camera, 
+I am just left with 
+hope and dreams 
+looking at the impossibly high towers. It is clear now."
+font_size = 45
